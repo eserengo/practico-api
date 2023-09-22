@@ -10,7 +10,13 @@ module.exports = {
       "md": "768px",
       "lg": "1024px",
     },
-    extend: {},
+    extend: {
+      colors: {
+        "OffWhite": "#fcfcfc",
+        "OffBlack": "#030303",
+        "OffGray": "#bfbfbf",
+      },
+    },
   },
   plugins: [],
 }
