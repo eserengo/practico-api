@@ -5,3 +5,4 @@
 - React Router DOM
 - Weather Icons
 - Feather Icons for React
+- React-Chart.js

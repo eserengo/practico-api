@@ -1,9 +1,12 @@
-
+import Menu from "../components/Menu.js"
 
 const Traffic = () => {
 
   return (
-    <h1>This is the Traffic page</h1>
+    <>
+      <Menu />
+      <h1>Esta es la página del Trafico.</h1>
+    </>
   )
 }
 

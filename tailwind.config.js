@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./public/index.html",
@@ -14,7 +15,8 @@ module.exports = {
       colors: {
         "OffWhite": "#fcfcfc",
         "OffBlack": "#030303",
-        "OffGray": "#bfbfbf",
+        "Gray75": "#bfbfbf",
+        "Gray25": "#404040",
       },
     },
   },
