@@ -21,12 +21,11 @@ const Home = () => {
           </Link>
         </article>
       </main>
-      <footer className="w-screen absolute bottom-0 text-center text-OffBlack text-sm p-2">
+      <footer className="w-screen absolute bottom-2 text-center text-OffBlack text-sm p-2">
         Trabajo practico creado por FAMAF-UNC y realizado por Federico Borzani.
         <br />
-        Ver codigo fuente en
-        <a href="https://github.com/eserengo/" target="_blank" rel="noreferrer">
-          <FiGithub className="inline w-4 h-4 ms-1"/>
+        <a href="https://github.com/eserengo/practico-api" target="_blank" rel="noreferrer">
+          Ver codigo fuente en <FiGithub className="inline w-4 h-4"/>
         </a>
       </footer>
     </>

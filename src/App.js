@@ -7,15 +7,15 @@ import "./App.css";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/practico-api",
       element: <Home />,
     },
     {
-      path: "weather",
+      path: "/practico-api/weather",
       element: <Weather />,
     },
     {
-      path: "traffic",
+      path: "/practico-api/traffic",
       element: <Traffic />,
     },
   ]);
