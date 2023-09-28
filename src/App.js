@@ -2,9 +2,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Home from "./pages/Home"
 import Weather from "./pages/Weather"
 import Traffic from "./pages/Traffic"
-import "./App.css";
+import Error from "./components/Error"
+import "./App.css"
 
 function App() {
+
   const router = createBrowserRouter([
     {
       path: "/practico-api",
@@ -18,6 +20,10 @@ function App() {
       path: "/practico-api/traffic",
       element: <Traffic />,
     },
+    {
+      path: "*",
+      element: <Error />
+    }
   ]);
 
   return (

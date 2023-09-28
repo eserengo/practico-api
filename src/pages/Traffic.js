@@ -1,11 +1,18 @@
+import { FaBusAlt } from "react-icons/fa"
 import Menu from "../components/Menu.js"
 
 const Traffic = () => {
+  const Logo = () => (
+    <span className="absolute top-0 left-0 p-2">
+      <FaBusAlt className="inline w-4 h-4 me-1 mb-1" />
+      Trafico
+    </span>
+  );
 
   return (
     <>
+      <Logo />
       <Menu />
-      <h1>Esta es la página del Trafico.</h1>
     </>
   )
 }

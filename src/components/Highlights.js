@@ -1,4 +1,4 @@
-import { WiBarometer, WiStrongWind, WiSunrise, WiSunset, WiHumidity, WiSmoke } from "react-icons/wi";
+import { WiBarometer, WiStrongWind, WiSunrise, WiSunset, WiHumidity, WiSmoke } from "react-icons/wi"
 
 const Highlights = () => {
   const data = [
@@ -17,19 +17,19 @@ const Highlights = () => {
     {
       title: "sunrise",
       value: "6:35 AM",
-    icon: < WiSunrise />,
+      icon: < WiSunrise />,
       info: "",
     },
     {
       title: "sunset",
       value: "5:42 PM",
-    icon: < WiSunset />,
+      icon: < WiSunset />,
       info: "",
     },
     {
       title: "humidity",
       value: "12%",
-    icon: < WiHumidity />,
+      icon: < WiHumidity />,
       info: "Normal",
     },
     {
@@ -41,19 +41,19 @@ const Highlights = () => {
   ];
 
   return (
-    <article className="col-start-1 col-end-1 row-auto md:col-start-2 md:col-span-3 md:row-start-2 md:row-span-2 p-2">
+    <article className="col-start-1 col-end-1 row-auto md:col-start-2 md:col-span-3 md:row-start-2 md:row-span-2 p-2 md:mt-8">
       <h2 className="text-2xl text-OffBlack">Highlights</h2>
-      <section className="flex flex-row flex-wrap items-center justify-start gap-2 py-2">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-[auto] gap-2 mt-2">
         {data.map((item, index) => {
           return (
             <div
               key={`card_${index}`}
-              className="relative flex flex-col items-start justify-center gap-2 border border-OffBlack rounded-md 
-              shadow-md shadow-Gray75 py-4 px-2 max-sm:w-full sm:w-[10rem] sm:h-[10rem]">
+              className="relative flex flex-col items-start justify-evenly gap-2 border border-OffBlack rounded-md 
+              shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[10rem]">
               <h3 className="text-Gray25 z-10">{(item.title).toUpperCase()}</h3>
-              <p className="text-OffBlack text-3xl font-bold z-10">{item.value}</p>
-              <p className="text-OffBlack z-10">{item.info}</p>
-              <span className="text-orange-300 absolute top-1 right-0 text-7xl z-0">
+              <p className="text-OffBlack text-4xl font-bold z-10">{item.value}</p>
+              <p className="text-Gray25 z-10">{item.info}</p>
+              <span className="text-indigo-300 absolute top-0 left-1/3 text-[10rem] z-0">
                 {item.icon}
               </span>
             </div>

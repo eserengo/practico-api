@@ -86,7 +86,7 @@ const Chart = () => {
   return (
     <article className="col-start-1 col-end-1 row-auto md:col-start-2 md:col-span-3 md:row-start-1 md:row-end-1 p-2">
       <h2 className="text-2xl text-OffBlack">Today</h2>
-      <section className="border border-OffBlack rounded-md shadow-md shadow-Gray75 p-2 
+      <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 p-4
         bg-gradient-to-tr from-orange-500 to-orange-300">
         <Bar data={data} options={options} />
       </section>
