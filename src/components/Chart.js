@@ -19,20 +19,22 @@ ChartJS.register(
   Legend
 );
 
-const Chart = () => {
+const Chart = ({ data }) => {
 
-  const data2 = {
-    labels: ["12:00 AM", "3:00 AM", "6:00 AM", "9:00 AM", "12:00 PM", "3:00 PM", "6:00 PM", "9:00 PM"],
-    datasets: [
-      {
-        label: "temperatura",
-        data: [18, 16, 18, 20, 25, 23, 21, 18, 16],
-        backgroundColor: "#fcfcfc",
-      }
-    ]
+  const inputData = () => {
+    return data.current_weather && {
+      labels: data.hourly.time.map(hour => hour.slice(-5)),
+      datasets: [
+        {
+          label: data.hourly_units.temperature_2m,
+          data: data.hourly.temperature_2m,
+          backgroundColor: "#fcfcfc",
+        }
+      ]
+    }
   }
 
-  const options = {
+  const inputOptions = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -40,7 +42,7 @@ const Chart = () => {
         min: 0,
         max: 40,
         ticks: {
-          stepSize: 20,
+          stepSize: 10,
           color: "#fcfcfc",
           font: {
             family: "Oswald",
@@ -59,7 +61,7 @@ const Chart = () => {
           color: "#fcfcfc",
           font: {
             family: "Oswald",
-            size: "16px",
+            size: "8px",
           }
         },
         grid: {
@@ -73,24 +75,33 @@ const Chart = () => {
     animation: false,
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
       tooltip: {
         enabled: true,
+        titleColor: "#fcfcfc",
         bodyFont: {
           family: "Oswald",
-        }
+        },
       },
     }
   }
 
   return (
     <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
-      <h2 className="text-2xl text-OffBlack">Today</h2>
-      <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 p-4
-        bg-gradient-to-tr from-orange-600 to-orange-300">
-        <Bar data={data2} options={options} />
-      </section>
+      {!data.current_weather
+        ? <section className="flex flex-col items-center justify-around border border-OffBlack rounded-md shadow-md 
+          shadow-Gray25 bg-gradient-to-tr from-orange-600 to-orange-300 w-full h-full">
+          <h1 className="text-[2rem] font-bold text-OffBlack">Cargando...</h1>
+        </section>
+        : <>
+          <h2 className="text-2xl text-OffBlack">Today</h2>
+          <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 bg-gradient-to-tr 
+          from-orange-600 to-orange-300 p-2">
+            <Bar data={ inputData() } options={ inputOptions } />
+          </section>
+        </>
+      }
     </article>
   )
 }

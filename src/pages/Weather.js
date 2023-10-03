@@ -39,7 +39,8 @@ const Weather = () => {
     data && !data.error
       ? <>
           <Logo />
-          <Menu />
+        <Menu />
+        
           <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-3 p-2 mt-32">
             <Forecast data={ data } />
             <Chart data={ data } />

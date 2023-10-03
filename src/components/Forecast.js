@@ -83,8 +83,8 @@ const Forecast = ({ data }) => {
   return (
     <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-3 border border-OffBlack rounded-md shadow-md
     shadow-Gray25 sm:me-2">
-      { !data.current_weather
-        ? <section className="flex flex-col items-center justify-around span-2 h-full">
+      {!data.current_weather
+        ? <section className="flex flex-col items-center justify-around p-2 w-full h-full">
           <h1 className="text-[2rem] font-bold text-OffBlack">Cargando...</h1>
         </section>
         : <section className={`p-2 h-full flex flex-col items-center justify-evenly gap-4
