@@ -22,7 +22,7 @@ function App() {
     },
     {
       path: "*",
-      element: <Error />
+      element: <Error data={{ error: "Page not found" }} />,
     }
   ]);
 

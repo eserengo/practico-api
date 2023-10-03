@@ -1,68 +1,139 @@
-import { WiCelsius, WiDayCloudyWindy, WiDaySunny, WiNightClear } from "react-icons/wi"
+import {
+  WiCloudy, WiFog, WiRain, WiRainMix, WiShowers, WiSleet, WiSnow, WiSnowflakeCold, WiSprinkle, WiThermometer,
+  WiDayCloudy, WiDayCloudyHigh, WiDayLightning, WiDaySleet, WiDaySnow, WiDaySunny, WiDayRain, WiDayRainMix,
+  WiDayShowers, WiDaySprinkle, WiDaySnowThunderstorm, WiDayStormShowers,
+  WiNightClear, WiNightAltCloudy, WiNightAltCloudyHigh, WiNightAltLightning, WiNightAltRain, WiNightAltRainMix,
+  WiNightAltShowers, WiNightAltSprinkle, WiNightAltSleet, WiNightAltSnow, WiNightAltSnowThunderstorm, WiNightAltStormShowers
+} from "react-icons/wi"
+import PropTypes from "prop-types"
 
-const Forecast = () => {
+const Forecast = ({ data }) => {
 
-  const data = [
-    {
-      day: "Monday",
-      time: "17.00",
-      temp: "20",
-      high: "29",
-      low: "13",
+  const date = () => {
+    return data.current_weather && new Date(data.current_weather.time);
+  }
+
+  const WeatherCode = () => {
+    if (!data.current_weather.is_day) {
+      switch (data.current_weather.weathercode) {
+        case 1: return (<span className="text-2xl text-center">Principalmente despejado <WiNightAltCloudyHigh className="text-8xl mx-auto" /></span>);
+        case 2: return (<span className="text-2xl text-center">Parcialmente nublado <WiNightAltCloudy className="text-8xl mx-auto" /></span>);
+        case 3: return (<span className="text-2xl text-center">Nublado <WiCloudy className="text-8xl mx-auto" /></span>);
+        case 45: return (<span className="text-2xl text-center">Niebla <WiFog className="text-8xl mx-auto" /></span>);
+        case 48: return (<span className="text-2xl text-center">Niebla de escarcha <WiSnowflakeCold className="text-8xl mx-auto" /></span>);
+        case 51: return (<span className="text-2xl text-center">LLovizna ligera <WiNightAltSprinkle className="text-8xl mx-auto" /></span>);
+        case 53: return (<span className="text-2xl text-center">LLovizna moderada <WiNightAltShowers className="text-8xl mx-auto" /></span>);
+        case 55: return (<span className="text-2xl text-center">LLovizna intensa <WiNightAltRain className="text-8xl mx-auto" /></span>);
+        case 56: return (<span className="text-2xl text-center">LLovizna helada ligera <WiNightAltSleet className="text-8xl mx-auto" /></span>);
+        case 57: return (<span className="text-2xl text-center">LLovizna helada intensa <WiNightAltRainMix className="text-8xl mx-auto" /></span>);
+        case 61: return (<span className="text-2xl text-center">Lluvias ligeras <WiSprinkle className="text-8xl mx-auto" /></span>);
+        case 63: return (<span className="text-2xl text-center">Lluvias moderadas <WiShowers className="text-8xl mx-auto" /></span>);
+        case 65: return (<span className="text-2xl text-center">Lluvias intensas <WiRain className="text-8xl mx-auto" /></span>);
+        case 66: return (<span className="text-2xl text-center">Lluvias heladas ligeras <WiSleet className="text-8xl mx-auto" /></span>);
+        case 67: return (<span className="text-2xl text-center">Lluvias heladas intensas <WiRainMix className="text-8xl mx-auto" /></span>);
+        case 71: return (<span className="text-2xl text-center">Nevadas ligeras <WiNightAltSnow className="text-8xl mx-auto" /></span>);
+        case 73: return (<span className="text-2xl text-center">Nevadas moderadas <WiNightAltSnow className="text-8xl mx-auto" /></span>);
+        case 75: return (<span className="text-2xl text-center">Nevadas intensas <WiSnow className="text-8xl mx-auto" /></span>);
+        case 77: return (<span className="text-2xl text-center">Nevizca <WiNightAltSleet className="text-8xl mx-auto" /></span>);
+        case 80: return (<span className="text-2xl text-center">Lluvias aisladas ligeras <WiNightAltSprinkle className="text-8xl mx-auto" /></span>);
+        case 81: return (<span className="text-2xl text-center">Lluvias aisladas moderadas <WiNightAltShowers className="text-8xl mx-auto" /></span>);
+        case 82: return (<span className="text-2xl text-center">Lluvias aisladas intensas <WiNightAltRain className="text-8xl mx-auto" /></span>);
+        case 85: return (<span className="text-2xl text-center">Nevadas aisladas ligeras <WiNightAltSnow className="text-8xl mx-auto" /></span>);
+        case 86: return (<span className="text-2xl text-center">Nevadas aisladas intensas <WiSnow className="text-8xl mx-auto" /></span>);
+        case 95: return (<span className="text-2xl text-center">Tormentas eléctricas <WiNightAltLightning className="text-8xl mx-auto" /></span>);
+        case 96: return (<span className="text-2xl text-center">Tormentas eléctricas con granizo ligero <WiNightAltSnowThunderstorm className="text-8xl mx-auto" /></span>);
+        case 99: return (<span className="text-2xl text-center">Tormentas eléctricas con granizo intenso <WiNightAltStormShowers className="text-8xl mx-auto" /></span>);
+        default: return (<span className="text-2xl text-center">Despejado <WiNightClear className="text-8xl mx-auto" /></span>);
+      }
+
+    } else {
+      switch (data.current_weather.weathercode) {
+        case 1: return (<span className="text-2xl text-center">Principalmente despejado <WiDayCloudyHigh className="text-8xl mx-auto" /></span>);
+        case 2: return (<span className="text-2xl text-center">Parcialmente nublado <WiDayCloudy className="text-8xl mx-auto" /></span>);
+        case 3: return (<span className="text-2xl text-center">Nublado <WiCloudy className="text-8xl mx-auto" /></span>);
+        case 45: return (<span className="text-2xl text-center">Niebla <WiFog className="text-8xl mx-auto"  /></span>);
+        case 48: return (<span className="text-2xl text-center">Niebla de escarcha <WiSnowflakeCold className="text-8xl mx-auto"  /></span>);
+        case 51: return (<span className="text-2xl text-center">LLovizna ligera <WiDaySprinkle className="text-8xl mx-auto"  /></span>);
+        case 53: return (<span className="text-2xl text-center">LLovizna moderada <WiDayShowers className="text-8xl mx-auto"  /></span>);
+        case 55: return (<span className="text-2xl text-center">LLovizna intensa <WiDayRain className="text-8xl mx-auto" /></span>);
+        case 56: return (<span className="text-2xl text-center">LLovizna helada ligera <WiDaySleet className="text-8xl mx-auto"  /></span>);
+        case 57: return (<span className="text-2xl text-center">LLovizna helada intensa <WiDayRainMix className="text-8xl mx-auto"  /></span>);
+        case 61: return (<span className="text-2xl text-center">Lluvias ligeras <WiSprinkle className="text-8xl mx-auto"  /></span>);
+        case 63: return (<span className="text-2xl text-center">Lluvias moderadas <WiShowers className="text-8xl mx-auto"  /></span>);
+        case 65: return (<span className="text-2xl text-center">Lluvias intensas <WiRain className="text-8xl mx-auto"  /></span>);
+        case 66: return (<span className="text-2xl text-center">Lluvias heladas ligeras <WiSleet className="text-8xl mx-auto"  /></span>);
+        case 67: return (<span className="text-2xl text-center">Lluvias heladas intensas <WiRainMix className="text-8xl mx-auto"  /></span>);
+        case 71: return (<span className="text-2xl text-center">Nevadas ligeras <WiDaySnow className="text-8xl mx-auto"  /></span>);
+        case 73: return (<span className="text-2xl text-center">Nevadas moderadas <WiDaySnow className="text-8xl mx-auto" /></span>);
+        case 75: return (<span className="text-2xl text-center">Nevadas intensas <WiSnow className="text-8xl mx-auto"  /></span>);
+        case 77: return (<span className="text-2xl text-center">Nevizca <WiDaySleet className="text-8xl mx-auto"  /></span>);
+        case 80: return (<span className="text-2xl text-center">Lluvias aisladas ligeras <WiDaySprinkle className="text-8xl mx-auto"  /></span>);
+        case 81: return (<span className="text-2xl text-center">Lluvias aisladas moderadas <WiDayShowers className="text-8xl mx-auto"  /></span>);
+        case 82: return (<span className="text-2xl text-center">Lluvias aisladas intensas <WiDayRain className="text-8xl mx-auto"  /></span>);
+        case 85: return (<span className="text-2xl text-center">Nevadas aisladas ligeras <WiDaySnow className="text-8xl mx-auto" /></span>);
+        case 86: return (<span className="text-2xl text-center">Nevadas aisladas intensas <WiSnow className="text-8xl mx-auto" /></span>);
+        case 95: return (<span className="text-2xl text-center">Tormentas eléctricas <WiDayLightning className="text-8xl mx-auto" /></span>);
+        case 96: return (<span className="text-2xl text-center">Tormentas eléctricas con granizo ligero <WiDaySnowThunderstorm className="text-8xl mx-auto" /></span>);
+        case 99: return (<span className="text-2xl text-center">Tormentas eléctricas con granizo intenso <WiDayStormShowers className="text-8xl mx-auto" /></span>);
+        default: return (<span className="text-2xl text-center">Despejado <WiDaySunny className="text-8xl mx-auto" /></span>);
+      }
     }
-  ];
+  }
 
   return (
-    data.map((item, index) => {
-      return (
-        <article
-          key={`article_${index}`}
-          className={`col-start-1 col-end-1 row-auto md:row-start-1 md:row-span-3 border border-OffBlack rounded-md shadow-md
-          shadow-Gray25 p-2 m-2 { ${item.time > 18 || item.time < 6 ? "nighttime text-OffWhite" : "daytime text-OffBlack"}`}>
-          <h1 className="flex flex-col items-center font-bold">
-            <span className="inline text-2xl">{item.time > 18 || item.time < 6 ? "Good night" : "Good day"}</span>
-            <br />
-            <span className="inline text-6xl">
-              {item.temp}
-              <sup>
-                <WiCelsius className="inline text-8xl -mx-4" />
-              </sup>
-            </span>
+    <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-3 border border-OffBlack rounded-md shadow-md
+    shadow-Gray25 sm:me-2">
+      { !data.current_weather
+        ? <section className="flex flex-col items-center justify-around span-2 h-full">
+          <h1 className="text-[2rem] font-bold text-OffBlack">Cargando...</h1>
+        </section>
+        : <section className={`p-2 h-full flex flex-col items-center justify-evenly gap-4
+          ${!data.current_weather.is_day ? "nighttime text-OffWhite" : "daytime text-OffBlack"}`}>
+          <p className="text-2xl">{ !data.current_weather.is_day ? "Buenas noches" : "Buenos dias" }</p>
+          <h1 className="inline text-5xl font-bold">
+            { data.current_weather.temperature }
+            <sup className="inline text-[2rem]">
+              { data.hourly_units.temperature_2m }
+            </sup>
+            <WiThermometer className="inline" />
           </h1>
-          <WiDayCloudyWindy className="text-6xl" />
-          <h3 className="text-3xl my-4">{item.day}, {item.time}</h3>
-          <section className="flex flex-col flex-nowrap items-center gap-2">
-            <div className="flex flex-col items-center gap-2 border border-OffBlack rounded-md shadow-md shadow-Gray75
-              p-4 w-full bg-gradient-to-tr from-orange-700 to-orange-400 text-OffWhite">
-              <h2 className="inline text-3xl font-bold">
-                {item.high}
-                <sup>
-                  <WiCelsius className="inline text-6xl -mx-2" />
+          <WeatherCode />
+          <p className="text-2xl text-center">
+            {date() && date().toLocaleString("es", { timeStyle: "short", dateStyle: "long", })}
+          </p>
+          <aside className="flex flex-row flex-wrap items-center justify-evenly rounded-md border border-OffBlack
+            shadow-md shadow-Gray25 divide-x p-4 bg-gradient-to-tr from-orange-700 to-orange-400 w-full">
+            <div className="flex flex-col items-center justify-between gap-2 pe-4 w-1/2 h-full">
+              <h2 className="text-[2rem] font-bold">
+                {data.daily.temperature_2m_max[0]}
+                <sup className="inline text-2xl">
+                  {data.daily_units.temperature_2m_max}
                 </sup>
               </h2>
-              <h4 className="uppercase inline text-xl">
-                high
-                <WiDaySunny className="inline text-4xl mb-2" />
-              </h4>
+              <p className="text-2xl text-center">
+                Maxima
+              </p>
             </div>
-            <div className="flex flex-col items-center gap-2 border border-OffBlack rounded-md shadow-md shadow-Gray75
-              p-4 w-full bg-gradient-to-tr from-indigo-700 to-indigo-400 text-OffWhite">
-              <h2 className="inline text-3xl font-bold">
-                {item.low}
-                <sup>
-                  <WiCelsius className="inline text-6xl -mx-2" />
+            <div className="flex flex-col items-center justify-between gap-2 ps-4 w-1/2 h-full">
+              <h2 className="text-[2rem] font-bold">
+                {data.daily.temperature_2m_min[0]}
+                <sup className="inline text-2xl">
+                  {data.daily_units.temperature_2m_min}
                 </sup>
               </h2>
-              <h4 className="uppercase inline text-xl">
-                low
-                <WiNightClear className="inline text-4xl mb-1" />
-              </h4>
+              <p className="text-2xl text-center">
+                Minima
+              </p>
             </div>
-          </section>
-        </article>
-      )
-    })
-  );
+          </aside>
+        </section>
+      }
+    </article>
+  )
+}
+
+Forecast.propTypes = {
+  data: PropTypes.object,
 }
 
 export default Forecast;
