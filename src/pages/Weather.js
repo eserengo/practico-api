@@ -38,14 +38,20 @@ const Weather = () => {
   return (
     data && !data.error
       ? <>
-          <Logo />
+        <Logo />
         <Menu />
         
-          <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-3 p-2 mt-32">
-            <Forecast data={ data } />
-            <Chart data={ data } />
-            <Highlights data={ data } />
+        {!data.current_weather
+          ? <main className="flex flex-col items-center justify-around p-2 w-screen h-screen">
+            <h1 className="text-5xl font-bold text-OffBlack">Cargando...</h1>
           </main>
+        
+          : <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-3 p-2 mt-32">
+            <Forecast data={data} />
+            <Chart data={data} />
+            <Highlights data={data} />
+          </main>
+        }
         </>
       : <Error data={ data } />
   )

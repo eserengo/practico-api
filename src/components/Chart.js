@@ -89,12 +89,8 @@ const Chart = ({ data }) => {
 
   return (
     <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
-      {!data.current_weather
-        ? <section className="flex flex-col items-center justify-around border border-OffBlack rounded-md shadow-md 
-          shadow-Gray25 bg-gradient-to-tr from-orange-600 to-orange-300 w-full h-full">
-          <h1 className="text-[2rem] font-bold text-OffBlack">Cargando...</h1>
-        </section>
-        : <>
+      {data.current_weather &&
+        <>
           <h2 className="text-2xl text-OffBlack">Today</h2>
           <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 bg-gradient-to-tr 
           from-orange-600 to-orange-300 p-2">
