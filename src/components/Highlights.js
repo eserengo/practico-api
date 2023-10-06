@@ -82,7 +82,7 @@ const Highlights = ({ data }) => {
 
   return (
     <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3 sm:row-start-2 sm:row-span-3 md:row-span-2 p-2 sm:mt-8">
-      <h2 className="text-2xl text-OffBlack">Highlights</h2>
+      <h2 className="text-2xl text-OffBlack">Destacados</h2>
       <section className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-[auto] gap-2 mt-2">
         {
           filteredData().map((item, index) => {

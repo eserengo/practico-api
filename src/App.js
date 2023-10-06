@@ -13,16 +13,16 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/practico-api/weather",
+      path: "/practico-api/clima",
       element: <Weather />,
     },
     {
-      path: "/practico-api/traffic",
+      path: "/practico-api/trafico",
       element: <Traffic />,
     },
     {
       path: "*",
-      element: <Error data={{ error: "Page not found" }} />,
+      element: <Error data={{ error: "Pagina no encontrada" }} />,
     }
   ]);
 
