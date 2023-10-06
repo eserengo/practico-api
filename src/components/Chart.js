@@ -88,16 +88,11 @@ const Chart = ({ data }) => {
   }
 
   return (
-    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
-      {data.current_weather &&
-        <>
-          <h2 className="text-2xl text-OffBlack">Today</h2>
-          <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 bg-gradient-to-tr 
-          from-orange-600 to-orange-300 p-2">
-            <Bar data={ inputData() } options={ inputOptions } />
-          </section>
-        </>
-      }
+    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-start-2 md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
+      <h2 className="text-2xl text-OffBlack">Today</h2>
+      <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 bg-gradient-to-tr from-orange-500 to-orange-300 p-2">
+        <Bar data={ inputData() } options={ inputOptions } />
+      </section>
     </article>
   )
 }

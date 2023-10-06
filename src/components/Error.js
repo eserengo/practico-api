@@ -19,11 +19,11 @@ const Error = ({ data }) => {
 
       <main className="flex flex-col sm:flex-row items-center justify-center sm:justify-evenly p-2 mt-32">
         <section className="bg-OffWhite sm:w-1/2">
-          <h2 className="text-bold text-3xl md:text-4xl text-center text-OffBlack">Ups, ha ocurrido un error inesperado.</h2>
+          <h2 className="text-bold text-3xl md:text-4xl text-center text-OffBlack">Disculpa, ha ocurrido un error inesperado.</h2>
           <h3 className="text-bold text-2xl md:text-3xl text-center text-OffBlack mt-2">{ data.error }</h3>
         </section>
         <figure className="bg-OffWhite sm:w-1/2">
-          <img src={tristeza} alt="tristeza mensaje de error" />
+          <img src={ tristeza } alt="tristeza mensaje de error" />
         </figure>
       </main>
     </>

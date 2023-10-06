@@ -81,50 +81,45 @@ const Forecast = ({ data }) => {
   }
 
   return (
-    <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-3 border border-OffBlack rounded-md shadow-md
-    shadow-Gray25 sm:me-2">
-      {data.current_weather &&
-        <section className={`p-2 h-full flex flex-col items-center justify-evenly gap-4
-          ${!data.current_weather.is_day ? "nighttime text-OffWhite" : "daytime text-OffBlack"}`}>
-          <p className="text-2xl">{ !data.current_weather.is_day ? "Buenas noches" : "Buenos dias" }</p>
-          <h1 className="inline text-5xl font-bold">
-            { data.current_weather.temperature }
-            <sup className="inline text-[2rem]">
-              { data.hourly_units.temperature_2m }
-            </sup>
-            <WiThermometer className="inline" />
-          </h1>
-          <WeatherCode />
-          <p className="text-2xl text-center">
-            {date() && date().toLocaleString("es", { timeStyle: "short", dateStyle: "long", })}
-          </p>
-          <aside className="flex flex-row flex-wrap items-center justify-evenly rounded-md border border-OffBlack
-            shadow-md shadow-Gray25 divide-x p-4 bg-gradient-to-tr from-orange-700 to-orange-400 w-full">
-            <div className="flex flex-col items-center justify-between gap-2 pe-4 w-1/2 h-full">
-              <h2 className="text-[2rem] font-bold">
-                {data.daily.temperature_2m_max[0]}
-                <sup className="inline text-2xl">
-                  {data.daily_units.temperature_2m_max}
-                </sup>
-              </h2>
-              <p className="text-2xl text-center">
-                Maxima
-              </p>
-            </div>
-            <div className="flex flex-col items-center justify-between gap-2 ps-4 w-1/2 h-full">
-              <h2 className="text-[2rem] font-bold">
-                {data.daily.temperature_2m_min[0]}
-                <sup className="inline text-2xl">
-                  {data.daily_units.temperature_2m_min}
-                </sup>
-              </h2>
-              <p className="text-2xl text-center">
-                Minima
-              </p>
-            </div>
-          </aside>
-        </section>
-      }
+    <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-4 md:row-span-3 border border-OffBlack rounded-md shadow-md shadow-Gray25 sm:me-2">
+      <section className={`flex flex-col items-center justify-evenly gap-4 p-2 h-full ${!data.current_weather.is_day ? "nighttime text-OffWhite" : "daytime text-OffBlack"}`}>
+        <p className="text-2xl">{ !data.current_weather.is_day ? "Buenas noches" : "Buenos dias" }</p>
+        <h1 className="inline text-5xl font-bold">
+          { data.current_weather.temperature }
+          <sup className="inline text-[2rem]">
+            { data.hourly_units.temperature_2m }
+          </sup>
+          <WiThermometer className="inline" />
+        </h1>
+        <WeatherCode />
+        <p className="text-2xl text-center">
+          {date() && date().toLocaleString("es", { timeStyle: "short", dateStyle: "long", })}
+        </p>
+        <aside className="flex flex-row flex-wrap items-center justify-evenly rounded-md border border-OffBlack shadow-md shadow-Gray25 divide-x divide-orange-400 p-4 bg-gradient-to-tr from-orange-700 to-orange-400 w-full">
+          <div className="flex flex-col items-center justify-between gap-2 pe-4 w-1/2 h-full">
+            <h2 className="text-[2rem] font-bold">
+              {data.daily.temperature_2m_max[0]}
+              <sup className="inline text-2xl">
+                {data.daily_units.temperature_2m_max}
+              </sup>
+            </h2>
+            <p className="text-2xl text-center">
+              Maxima
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-between gap-2 ps-4 w-1/2 h-full">
+            <h2 className="text-[2rem] font-bold">
+              {data.daily.temperature_2m_min[0]}
+              <sup className="inline text-2xl">
+                {data.daily_units.temperature_2m_min}
+              </sup>
+            </h2>
+            <p className="text-2xl text-center">
+              Minima
+            </p>
+          </div>
+        </aside>
+      </section>
     </article>
   )
 }

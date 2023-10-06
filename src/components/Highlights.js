@@ -4,13 +4,12 @@ import PropTypes from "prop-types"
 
 const Highlights = ({ data }) => {
 
-  console.log(data);
-
-  const filterdData = () => {
-    return data.current_weather && [
+  const filteredData = () => {
+    return data.current_weather &&
+    [
       {
         title: "indice uv",
-        value: `${data.daily.uv_index_max} ${data.daily_units.uv_index_max}`,
+        value: `${data.daily.uv_index_max}`,
         icon: < BiTachometer />,
         level: data.daily.uv_index_max > 5 ? "Alto" : data.daily.uv_index_max <= 2 ? "Bajo" : "Moderado",
       },
@@ -18,7 +17,7 @@ const Highlights = ({ data }) => {
         title: "velocidad del viento",
         value: `${data.current_weather.windspeed} ${data.current_weather_units.windspeed}`,
         icon: < WiStrongWind />,
-        level: data.current_weather.windspeed > 50 ? "Fuerte" : data.current_weather.windspeed < 20 ? "Leve" : "Moderado",
+        level: data.current_weather.windspeed > 50 ? "Fuerte" : data.current_weather.windspeed < 20 ? "Leve" : "Moderada",
       },
       {
         title: "direccion del viento",
@@ -60,11 +59,14 @@ const Highlights = ({ data }) => {
   }
 
   const windDir = (input) => {
-    switch (input) {
-      case (input < 45 || input >= 315): return "Norte";
-      case (input < 135 && input >= 45): return "Este";
-      case (input < 225 && input >= 135): return "Sur";
-      default: return "Oeste";
+    if (input < 45 || input >= 315) {
+      return "Predominante Norte";
+    } else if (input >= 45 && input < 135) {
+      return "Predominante Este";
+    } else if (input >= 135 && input < 225) {
+      return "Predominante Sur";
+    } else {
+      return "Predominante Oeste";
     }
   }
 
@@ -79,28 +81,24 @@ const Highlights = ({ data }) => {
   }
 
   return (
-    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3 sm:row-start-2 
-    sm:row-span-2 p-2 sm:mt-8">
-      {data.current_weather &&
-        <>
-          <h2 className="text-2xl text-OffBlack">Highlights</h2>
-          <section className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-[auto] gap-2 mt-2">
-            {filterdData().map((item, index) => {
-              return (
-                <div
-                  key={`card_${index}`}
-                  className="relative flex flex-col items-start justify-evenly gap-2 border border-OffBlack rounded-md
-                  shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[10rem]">
-                  <h3 className="text-Gray25 z-10 uppercase">{ item.title }</h3>
-                  <p className="text-indigo-700 text-[2.5rem] font-extrabold z-10">{ item.value }</p>
-                  <p className="text-indigo-700 font-bold z-10">{ item.level }</p>
-                  <span className="text-orange-200 absolute -top-4 left-1/3 text-[12rem] z-0">{ item.icon }</span>
-                </div>
-              )
-            })}
-          </section>
-        </>
-      }
+    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3 sm:row-start-2 sm:row-span-3 md:row-span-2 p-2 sm:mt-8">
+      <h2 className="text-2xl text-OffBlack">Highlights</h2>
+      <section className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-[auto] gap-2 mt-2">
+        {
+          filteredData().map((item, index) => {
+            return (
+              <div
+                key={`card_${index}`}
+                className="relative flex flex-col items-start justify-evenly gap-2 border border-OffBlack rounded-md shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[10rem] bg-gradient-to-tr from-orange-500 to-orange-300">
+                <h3 className="text-OffBlack z-10 uppercase">{ item.title }</h3>
+                <p className="text-indigo-800 text-[2.5rem] font-bold z-10">{ item.value }</p>
+                <p className="text-OffBlack text-xl z-10">{ item.level }</p>
+                <span className="text-OffWhite opacity-25 absolute -top-4 left-1/3 text-[12rem] z-0">{ item.icon }</span>
+              </div>
+            )
+          })
+        }
+      </section>
     </article>
   )
 }
