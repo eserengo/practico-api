@@ -20,10 +20,10 @@ const Menu = () => {
             <Link to={"/practico-api"}>Inicio</Link>
           </li>
           <li onClick={toggleIsActive} className="text-Gray25 hover:text-OffBlack pt-1">
-            <Link to={"/practico-api/weather"}>Clima</Link>
+            <Link to={"/practico-api/clima"}>Clima</Link>
           </li>
           <li onClick={toggleIsActive} className="text-Gray25 hover:text-OffBlack pt-1">
-            <Link to={"/practico-api/traffic"}>Trafico</Link>
+            <Link to={"/practico-api/trafico"}>Trafico</Link>
           </li>
         </ul>
       }

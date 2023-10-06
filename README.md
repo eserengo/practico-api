@@ -1,23 +1,24 @@
 # Dashboard
 
-## Descripcion del proyecto:
+## Descripción del proyecto:
 Es un dashboard de clima en vivo creado con **React**.
 
-## Version en vivo:
+## Versión en vivo:
 <https://eserengo.github.io/practico-api/>
 
 ### Creado con:
 [Create-React-App](https://create-react-app.dev/)
+[Weather Forecast API](https://open-meteo.com/en/docs)
 
 ### Librerías externas:
-- [Tailwind CSS](https://tailwindcss.com/)
-- [React Router DOM](https://reactrouter.com/en/main)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [React-Chart.js](https://react-chartjs-2.js.org/)
+- Para los estilos [Tailwind CSS](https://tailwindcss.com/)
+- Para el enrutado de las páginas [React Router DOM](https://reactrouter.com/en/main)
+- Para la iconografía del sitio [React Icons](https://react-icons.github.io/react-icons/)
+- Para la generación del gráfico [React-Chart.js](https://react-chartjs-2.js.org/)
 
 ### Autor
-👤 Federico Borzani
-GitHub: <https://github.com/eserengo>
+👤 Federico Borzani <br>
+GitHub: <https://github.com/eserengo> <br>
 email: <eserengo@gmail.com>
 
 ### Agradecimientos

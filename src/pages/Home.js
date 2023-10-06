@@ -21,7 +21,7 @@ const Home = () => {
           className="grid max-sm:grid-cols-1 max-sm:grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 border border-OffBlack rounded-md
           shadow-md shadow-Gray25 max-sm:mx-4 max-sm:w-full sm:w-3/4 md:w-2/3 h-1/2">
           <Link
-            to={"/practico-api/weather"}
+            to={"/practico-api/clima"}
             className="weather text-OffWhite text-3xl max-sm:col-start-1 max-sm:row-start-1 sm:col-start-1 sm:row-start-1
             max-sm:rounded-tr-md max-sm:rounded-tl-md sm:rounded-tl-md sm:rounded-bl-md flex flex-row
             items-center justify-center gap-2 opacity-80 hover:opacity-100">
@@ -29,7 +29,7 @@ const Home = () => {
             <span className="inline">Clima</span>
           </Link>
           <Link
-            to={"/practico-api/traffic"}
+            to={"/practico-api/trafico"}
             className="traffic text-OffWhite text-3xl max-sm:col-start-1 max-sm:row-start-2 sm:col-start-2 sm:row-start-1
             max-sm:rounded-br-md max-sm:rounded-bl-md sm:rounded-tr-md sm:rounded-br-md flex flex-row
             items-center justify-center gap-2 opacity-80 hover:opacity-100">
