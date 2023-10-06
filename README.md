@@ -8,7 +8,9 @@ Es un dashboard de clima en vivo creado con **React**.
 
 ### Creado con:
 [Create-React-App](https://create-react-app.dev/)
-[Weather Forecast API](https://open-meteo.com/en/docs)
+
+### API
+- Para los datos climáticos [Weather Forecast API](https://open-meteo.com/en/docs)
 
 ### Librerías externas:
 - Para los estilos [Tailwind CSS](https://tailwindcss.com/)
@@ -22,18 +24,17 @@ GitHub: <https://github.com/eserengo> <br>
 email: <eserengo@gmail.com>
 
 ### Agradecimientos
-Gracias a:
-- Los mentores.
-- Mis compañeros.
-- Los revisores de código.
+Gracias a: <br>
+Los mentores. <br>
+Mis compañeros. <br>
 Por sus valiosas contribuciones y compañerismo.
 
 Inspiración.
 
-🤝 Contribuciones
+🤝 Contribuciones <br>
 ¡Las contribuciones, problemas y solicitudes de funciones son bienvenidas! No dudes en consultar la página de problemas.
 
-Muestra tu apoyo
+Muestra tu apoyo <br>
 ¡Dale una ⭐️ si te gusta este proyecto!
 
 📝 Licencia
