@@ -3,6 +3,8 @@ import Menu from "./Menu"
 import tristeza from "../assets/tristeza-mensaje-de-error.png"
 import PropTypes from "prop-types"
 
+/* El componente de error que se muestra cuando la ruta es incorrecta o cuando la solicitud a la API falla. */
+
 const Error = ({ data }) => {
 
   const Logo = () => (

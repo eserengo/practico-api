@@ -2,6 +2,9 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { FiMenu, FiXCircle } from "react-icons/fi";
 
+/* Este componente muestra un pequeño menu en forma de hamburguesa que puede ser desplegado y contiene por ahora solamente
+links a las distintas páginas. */
+
 const Menu = () => {
   const [isActive, setIsActive] = useState(false);
   const toggleIsActive = () => {

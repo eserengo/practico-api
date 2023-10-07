@@ -2,6 +2,13 @@ import { WiHorizon, WiHorizonAlt, WiHumidity, WiStrongWind, WiUmbrella, WiWindDe
 import { BiShow, BiTachometer } from "react-icons/bi";
 import PropTypes from "prop-types"
 
+/* Este componente muestra las tarjetas de los datos destacados. Primero se filtran de la información de la API los datos
+deseados y se guardan en la variable filteredData, la cual luego se mapea para generar cada una de las tarjetas.
+Cada tarjeta muestra un título, el valor correspondiente suministrado por la API, un ícono descriptivo y un nivel condicional 
+al valor suministrado. Por ejemplo las funciones winDir, humidity y visibility calculan este nivel.
+Las tarjetas están posicionadas con css grid para lograr mayor responsividad.
+*/ 
+
 const Highlights = ({ data }) => {
 
   const filteredData = () => {

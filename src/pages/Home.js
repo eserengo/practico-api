@@ -2,6 +2,9 @@ import { Link } from "react-router-dom"
 import { FaHome, FaArrowLeft, FaArrowRight, FaGithub } from "react-icons/fa"
 import Menu from "../components/Menu.js"
 
+/* La página de bienvenida a la App. Muestra un pequeño logo, el menu, un footer con información y link y dos opciones 
+para dirigirse ya sea a la página de clima o a la de tráfico. */
+
 const Home = () => {
 
   const Logo = () => (

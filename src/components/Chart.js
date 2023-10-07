@@ -19,6 +19,8 @@ ChartJS.register(
   Legend
 );
 
+/* Este componente muestra el gráfico de barras con las temperaturas por hora. Esta desarrollado con la librería Chart.JS */
+
 const Chart = ({ data }) => {
 
   const inputData = () => {

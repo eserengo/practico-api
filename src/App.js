@@ -5,6 +5,8 @@ import Traffic from "./pages/Traffic"
 import Error from "./components/Error"
 import "./App.css"
 
+/* Este componente es el ancestro de todos los otros. Solo maneja las rutas de las distintas páginas y el estilo global. */
+
 function App() {
 
   const router = createBrowserRouter([

@@ -7,6 +7,7 @@ Es un dashboard de clima en vivo creado con **React**.
 <https://eserengo.github.io/practico-api/>
 
 ### Creado con:
+[React](https://es.react.dev/)
 [Create-React-App](https://create-react-app.dev/)
 
 ### API

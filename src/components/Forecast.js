@@ -7,6 +7,19 @@ import {
 } from "react-icons/wi"
 import PropTypes from "prop-types"
 
+/* Este componente muestra los datos a la izquierda de la pantalla, a saber:
+- La temperatura actual.
+- El código de clima, para renderizarlo se usa el minicomponente WeatherCode, cuya lógica es un condicional switch. Dependiendo
+del número del código suministrado por la API devuelve un texto descriptivo y un ícono correspondiente de la librería Weather
+Icons. Dependiendo de si la variable is_day es verdadera o falsa corresponde un ícono diurno o nocturno. Algunos íconos son 
+indistintos.
+- La fecha y la hora.
+- Temperaturas máxima y mínima del día.
+
+El componente muestra una imagen de fondo ejemplificativa y texto oscuro o claro dependiendo nuevamente si la variable
+is_day es verdadera o falsa.
+*/ 
+
 const Forecast = ({ data }) => {
 
   const date = () => {

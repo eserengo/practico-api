@@ -1,6 +1,8 @@
 import { FaBusAlt } from "react-icons/fa"
 import Menu from "../components/Menu.js"
 
+/* La página del tráfico. Todavía no desarrollada. */
+
 const Traffic = () => {
   const Logo = () => (
     <span className="absolute top-0 left-0 p-2">
