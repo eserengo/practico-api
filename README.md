@@ -8,7 +8,6 @@ Es un dashboard de clima en vivo creado con **React**.
 
 ### Creado con:
 [React](https://es.react.dev/)
-[Create-React-App](https://create-react-app.dev/)
 
 ### API
 - Para los datos climáticos [Weather Forecast API](https://open-meteo.com/en/docs)
@@ -38,5 +37,5 @@ Inspiración.
 Muestra tu apoyo <br>
 ¡Dale una ⭐️ si te gusta este proyecto!
 
-📝 Licencia
+📝 Licencia <br>
 Este proyecto tiene Licencia [MIT](https://github.com/eserengo/practico-api/blob/main/LICENSE)

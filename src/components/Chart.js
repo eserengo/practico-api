@@ -17,23 +17,25 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
-/* Este componente muestra el gráfico de barras con las temperaturas por hora. Esta desarrollado con la librería Chart.JS */
+/* Este componente muestra el gráfico de barras con las temperaturas por hora. Esta desarrollado con la 
+librería Chart.JS */
 
 const Chart = ({ data }) => {
-
   const inputData = () => {
-    return data.current_weather && {
-      labels: data.hourly.time.map(hour => hour.slice(-5)),
-      datasets: [
-        {
-          label: data.hourly_units.temperature_2m,
-          data: data.hourly.temperature_2m,
-          backgroundColor: "#fcfcfc",
-        }
-      ]
-    }
+    return (
+      data.current_weather && {
+        labels: data.hourly.time.map((hour) => hour.slice(-5)),
+        datasets: [
+          {
+            label: data.hourly_units.temperature_2m,
+            data: data.hourly.temperature_2m,
+            backgroundColor: "#fcfcfc",
+          },
+        ],
+      }
+    );
   }
 
   const inputOptions = {
@@ -64,7 +66,7 @@ const Chart = ({ data }) => {
           font: {
             family: "Oswald",
             size: "8px",
-          }
+          },
         },
         grid: {
           display: false,
@@ -72,7 +74,7 @@ const Chart = ({ data }) => {
         border: {
           display: false,
         },
-      }
+      },
     },
     animation: false,
     plugins: {
@@ -86,21 +88,23 @@ const Chart = ({ data }) => {
           family: "Oswald",
         },
       },
-    }
-  }
+    },
+  };
 
   return (
-    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-start-2 md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
+    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-start-2
+      md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
       <h2 className="text-2xl text-OffBlack">Hoy</h2>
-      <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 bg-gradient-to-tr from-orange-500 to-orange-300 p-2">
-        <Bar data={ inputData() } options={ inputOptions } />
+      <section className="border border-OffBlack rounded-md shadow-md shadow-Gray25 bg-gradient-to-tr
+      from-orange-500 to-orange-300 p-2">
+        <Bar data={inputData()} options={inputOptions} />
       </section>
     </article>
-  )
-}
+  );
+};
 
 Chart.propTypes = {
   data: PropTypes.object,
-}
+};
 
 export default Chart;

@@ -14,33 +14,27 @@
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
       url("./assets/bg-image-daytime.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
   
   .nighttime {
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
       url("./assets/bg-image-nighttime.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
 
   .weather {
     background-image: 
       linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
       url("./assets/bg-weather.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
 
   .traffic {
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
       url("./assets/bg-traffic.jpg");
+  }
+
+  .custom-bg {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

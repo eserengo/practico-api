@@ -21,20 +21,20 @@ const Home = () => {
 
       <main className="flex items-center justify-center h-screen w-screen">
         <article
-          className="grid max-sm:grid-cols-1 max-sm:grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 border border-OffBlack rounded-md
-          shadow-md shadow-Gray25 max-sm:mx-4 max-sm:w-full sm:w-3/4 md:w-2/3 h-1/2">
+          className="grid max-sm:grid-cols-1 max-sm:grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 border border-OffBlack
+          rounded-md shadow-md shadow-Gray25 max-sm:mx-4 max-sm:w-full sm:w-3/4 md:w-2/3 h-1/2">
           <Link
             to={"/practico-api/clima"}
-            className="weather text-OffWhite text-3xl max-sm:col-start-1 max-sm:row-start-1 sm:col-start-1 sm:row-start-1
-            max-sm:rounded-tr-md max-sm:rounded-tl-md sm:rounded-tl-md sm:rounded-bl-md flex flex-row
-            items-center justify-center gap-2 opacity-80 hover:opacity-100">
+            className="custom-bg weather text-OffWhite text-3xl max-sm:col-start-1 max-sm:row-start-1 sm:col-start-1
+            sm:row-start-1 max-sm:rounded-tr-md max-sm:rounded-tl-md sm:rounded-tl-md sm:rounded-bl-md flex
+            flex-row items-center justify-center gap-2 opacity-80 hover:opacity-100">
             <FaArrowLeft className="inline mt-1" />
             <span className="inline">Clima</span>
           </Link>
           <Link
             to={"/practico-api/trafico"}
-            className="traffic text-OffWhite text-3xl max-sm:col-start-1 max-sm:row-start-2 sm:col-start-2 sm:row-start-1
-            max-sm:rounded-br-md max-sm:rounded-bl-md sm:rounded-tr-md sm:rounded-br-md flex flex-row
+            className="custom-bg traffic text-OffWhite text-3xl max-sm:col-start-1 max-sm:row-start-2 sm:col-start-2
+            sm:row-start-1 max-sm:rounded-br-md max-sm:rounded-bl-md sm:rounded-tr-md sm:rounded-br-md flex flex-row
             items-center justify-center gap-2 opacity-80 hover:opacity-100">
             <span className="inline">Trafico</span>
             <FaArrowRight className="inline mt-1" />
@@ -46,7 +46,7 @@ const Home = () => {
         Trabajo practico creado por FAMAF-UNC y realizado por Federico Borzani.
         <br />
         <a href="https://github.com/eserengo/practico-api" target="_blank" rel="noreferrer">
-          Ver codigo fuente en <FaGithub className="inline w-4 h-4 mb-1"/>
+          Ver codigo fuente en <FaGithub className="inline w-4 h-4 mb-1" />
         </a>
       </footer>
     </>
