@@ -6,12 +6,10 @@ import Forecast from "../components/Forecast.js"
 import Chart from "../components/Chart.js"
 import Highlights from "../components/Highlights.js"
 
-/* Esta es la página principal de la aplicación, madre de todos los componentes desarrollados por ahora.
-Maneja la solicitud a la API del clima mediante un hook de efecto, almacena el resultado en un hook de estado y lo
-envía a sus descendientes mediante props.
+/* Esta es la página principal del clima. Maneja la solicitud a la API del clima mediante un hook de efecto, 
+almacena el resultado en un hook de estado y lo envía a sus descendientes mediante props.
 Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta no es exitosa.
-Cuando se reciben los datos se renderizan los componentes correspondientes.
- */
+Cuando se reciben los datos se renderizan los componentes correspondientes. */
 
 const Weather = () => {
   const [data, setData] = useState({});
@@ -68,7 +66,7 @@ const Weather = () => {
             </main>
 
             : <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4
-              md:grid-rows-3 p-2 mt-32">
+              md:grid-rows-3 p-2 max-sm:mt-32 sm:mt-12">
               <Forecast data={data} />
               <Chart data={data} />
               <Highlights data={data} />
