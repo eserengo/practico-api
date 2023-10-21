@@ -67,9 +67,9 @@ const Weather = () => {
 
             : <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4
               md:grid-rows-3 p-2 max-sm:mt-32 sm:mt-12">
-              <Forecast data={data} />
-              <Chart data={data} />
-              <Highlights data={data} />
+              <Forecast data={ data } />
+              <Chart data={ data } />
+              <Highlights data={ data } />
             </main>
         }
       </>
