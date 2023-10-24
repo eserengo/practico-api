@@ -11,58 +11,107 @@ const Menu = () => {
   const [isActive, setIsActive] = useState(false);
   const toggleIsActive = () => {
     setIsActive(!isActive);
-  }
+  };
 
   return (
     <nav className="absolute top-0 right-0 p-2 z-10">
-      {!isActive
-        ? <FiMenu onClick={toggleIsActive} className="inline cursor-pointer text-OffBlack sm:hidden" />
-        : <ul className="flex flex-col items-end justify-center sm:hidden">
-          <li onClick={toggleIsActive}>
-            <FiXCircle className="inline cursor-pointer text-OffBlack" />
-          </li>
-          <li className="pt-1">
-            <NavLink to={"/practico-api"} end onClick={toggleIsActive}
-              className={({ isActive }) => isActive ? "text-OffBlack border-b-2 border-OffBlack" : "text-Gray75 hover:text-Gray25"}>
-              Inicio
-            </NavLink>
-          </li>
-          <li className="pt-1">
-            <NavLink to={"/practico-api/clima"} end onClick={toggleIsActive}
-              className={({ isActive }) => isActive ? "text-OffBlack border-b-2 border-OffBlack" : "text-Gray75 hover:text-Gray25"}>
-              Clima
-            </NavLink>
-          </li>
-          <li className="pt-1">
-            <NavLink to={"/practico-api/trafico"} end onClick={toggleIsActive}
-              className={({ isActive }) => isActive ? "text-OffBlack border-b-2 border-OffBlack" : "text-Gray75 hover:text-Gray25"}>
-              Trafico
-            </NavLink>
-          </li>
-        </ul>
+      {
+        !isActive      
+          ? <FiMenu
+              onClick={toggleIsActive}
+              className="inline cursor-pointer text-OffBlack sm:hidden"
+            />
+          : <ul className="flex flex-col items-end justify-center sm:hidden">
+              <li onClick={toggleIsActive}>
+                <FiXCircle className="inline cursor-pointer text-OffBlack" />
+              </li>
+              <li className="pt-1">
+                <NavLink
+                  to={"/practico-api"}
+                  end
+                  onClick={toggleIsActive}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-OffBlack border-b-2 border-OffBlack"
+                      : "text-Gray75 hover:text-Gray25"
+                  }
+                >
+                  Inicio
+                </NavLink>
+              </li>
+              <li className="pt-1">
+                <NavLink
+                  to={"/practico-api/clima"}
+                  end
+                  onClick={toggleIsActive}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-OffBlack border-b-2 border-OffBlack"
+                      : "text-Gray75 hover:text-Gray25"
+                  }
+                >
+                  Clima
+                </NavLink>
+              </li>
+              <li className="pt-1">
+                <NavLink
+                  to={"/practico-api/trafico"}
+                  end
+                  onClick={toggleIsActive}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-OffBlack border-b-2 border-OffBlack"
+                      : "text-Gray75 hover:text-Gray25"
+                  }
+                >
+                  Trafico
+                </NavLink>
+              </li>
+            </ul>
       }
-      <ul className="flex flex-row items-center justify-end max-sm:hidden"> 
+      <ul className="flex flex-row items-center justify-end max-sm:hidden">
         <li className="p-1 pt-0">
-          <NavLink to={"/practico-api"} end 
-            className={ ({ isActive }) => isActive ? "text-OffBlack border-b-2 border-OffBlack" : "text-Gray75 hover:text-Gray25" }>
+          <NavLink
+            to={"/practico-api"}
+            end
+            className={({ isActive }) =>
+              isActive
+                ? "text-OffBlack border-b-2 border-OffBlack"
+                : "text-Gray75 hover:text-Gray25"
+            }
+          >
             Inicio
           </NavLink>
         </li>
         <li className="p-1 pt-0">
-          <NavLink to={"/practico-api/clima"} end 
-            className={({ isActive }) => isActive ? "text-OffBlack border-b-2 border-OffBlack" : "text-Gray75 hover:text-Gray25"}>
+          <NavLink
+            to={"/practico-api/clima"}
+            end
+            className={({ isActive }) =>
+              isActive
+                ? "text-OffBlack border-b-2 border-OffBlack"
+                : "text-Gray75 hover:text-Gray25"
+            }
+          >
             Clima
           </NavLink>
         </li>
         <li className="p-1 pt-0">
-          <NavLink to={"/practico-api/trafico"} end 
-            className={({ isActive }) => isActive ? "text-OffBlack border-b-2 border-OffBlack" : "text-Gray75 hover:text-Gray25"}>
+          <NavLink
+            to={"/practico-api/trafico"}
+            end
+            className={({ isActive }) =>
+              isActive
+                ? "text-OffBlack border-b-2 border-OffBlack"
+                : "text-Gray75 hover:text-Gray25"
+            }
+          >
             Trafico
           </NavLink>
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 
 export default Menu;

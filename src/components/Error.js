@@ -18,7 +18,7 @@ const Error = ({ data }) => {
       <Logo />
       <Menu />
 
-      <main className="flex flex-col sm:flex-row items-center justify-center sm:justify-evenly p-2 mt-32">
+      <article className="flex flex-col sm:flex-row items-center justify-center sm:justify-evenly p-2 mt-32">
         <section className="bg-OffWhite sm:w-1/2">
           <h2 className="text-bold text-3xl md:text-4xl text-center text-OffBlack">
             Disculpa, ha ocurrido un error inesperado.
@@ -28,9 +28,9 @@ const Error = ({ data }) => {
           </h3>
         </section>
         <figure className="bg-OffWhite sm:w-1/2">
-          <img src={tristeza} alt="tristeza mensaje de error" />
+          <img src={ tristeza } alt="tristeza mensaje de error" />
         </figure>
-      </main>
+      </article>
     </>
   );
 };
