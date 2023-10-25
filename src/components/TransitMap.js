@@ -2,7 +2,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import L from "leaflet"
 import * as ReactDOMServer from "react-dom/server"
 import { FaBusAlt } from "react-icons/fa"
-import Error from "./Error"
 import PropTypes from "prop-types"
 
 const TransitMap = ({ data }) => {
@@ -22,9 +21,7 @@ const TransitMap = ({ data }) => {
   }
 
   return (
-    !data.length
-      ? <Error data={{ error: "No se encontraron resultados" }} />
-      : <MapContainer
+      <MapContainer
         key={`${averageLatitude()}_${averageLongitude()}`}
         center={[averageLatitude(), averageLongitude()]}
         zoom={11}

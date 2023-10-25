@@ -459,8 +459,7 @@ const Forecast = ({ data }) => {
   return (
     <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-4 md:row-span-3 border
       border-OffBlack rounded-md shadow-md shadow-Gray25 max-sm:mx-2 sm:me-2 sm:mb-2 sm:mt-10 lg:mb-4 xl:mb-6">
-      <section
-        className={`flex flex-col items-center justify-evenly gap-4 p-2 h-full ${
+      <section className={`flex flex-col items-center justify-evenly gap-4 p-2 h-full ${
           !data.current_weather.is_day
             ? "custom-bg nighttime text-OffWhite"
             : "custom-bg daytime text-OffBlack"
