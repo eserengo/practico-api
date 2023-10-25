@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/practico-api/static/css/main.4f7fbb6f.css",
-    "main.js": "/practico-api/static/js/main.c5e2e05c.js",
+    "main.css": "/practico-api/static/css/main.93d8baa9.css",
+    "main.js": "/practico-api/static/js/main.25805fd2.js",
     "static/media/bg-traffic.jpg": "/practico-api/static/media/bg-traffic.7287844e3b14f73fbb09.jpg",
     "static/media/tristeza-mensaje-de-error.png": "/practico-api/static/media/tristeza-mensaje-de-error.7ce8b7a4c01b0f282fa6.png",
     "static/media/bg-image-nighttime.jpg": "/practico-api/static/media/bg-image-nighttime.600bc441e1778b3818db.jpg",
     "static/media/bg-image-daytime.jpg": "/practico-api/static/media/bg-image-daytime.8aa1a8892d9ce1817ec4.jpg",
     "static/media/bg-weather.jpg": "/practico-api/static/media/bg-weather.f46641fad7f5b427a2db.jpg",
     "index.html": "/practico-api/index.html",
-    "main.4f7fbb6f.css.map": "/practico-api/static/css/main.4f7fbb6f.css.map",
-    "main.c5e2e05c.js.map": "/practico-api/static/js/main.c5e2e05c.js.map"
+    "main.93d8baa9.css.map": "/practico-api/static/css/main.93d8baa9.css.map",
+    "main.25805fd2.js.map": "/practico-api/static/js/main.25805fd2.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f7fbb6f.css",
-    "static/js/main.c5e2e05c.js"
+    "static/css/main.93d8baa9.css",
+    "static/js/main.25805fd2.js"
   ]
 }
