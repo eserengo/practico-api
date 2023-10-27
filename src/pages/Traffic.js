@@ -1,15 +1,18 @@
 import { useState, useRef, useId, useEffect, useMemo } from "react"
 import { useSearchParams } from "react-router-dom"
 import { FaBusAlt, FaSearch } from "react-icons/fa"
+import { CLIENT_ID, CLIENT_SECRET } from "../config/APIKeys.js"
 import Menu from "../components/Menu.js"
 import Spinner from "../components/Spinner.js"
 import Error from "../components/Error.js"
 import TransitMap from "../components/TransitMap.js"
 
-/* Esta es la página principal del tráfico. Maneja la solicitud a la API del clima mediante un hook de efecto, 
+/* Esta es la página principal del tráfico. Maneja la solicitud a la API mediante un hook de efecto, 
 almacena el resultado en un hook de estado y lo envía a sus descendientes mediante props.
-Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta no es exitosa.
-Cuando se reciben los datos se renderizan los componentes correspondientes. */
+Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta no es 
+exitosa.
+Cuando se reciben los datos se renderizan los componentes correspondientes.
+*/
 
 const Traffic = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,64 +24,61 @@ const Traffic = () => {
   const searchId = useId();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    (async function fetchData() {
-      try {
-        const res = await fetch("trafficData.json");
-        const json = await res.json();
+  const fetchData = async () => {
+    const API_ENDPOINT = "https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple";
+    const API_QUERY_PARAMS = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`;
+    const JSON_FILE_URL = "trafficData.json";
+
+    try {
+      const response = await fetch(API_ENDPOINT + API_QUERY_PARAMS);
+      if (response.ok) {
+        const json = await response.json();
         setIsLoading(false);
         return setData(json);
-      } catch (err) {
-        return setData({ error: err.message });
       }
-    })();
-  }, []);
+      throw new Error();
+    } catch (err) {
+      try {
+        const response = await fetch(JSON_FILE_URL);
+        const json = await response.json();
+        if (json) {
+          setIsLoading(false);
+          return setData(json);
+        }
+        throw new Error();
+      } catch (err) {
+        return setData({ error: "No se pudo obtener datos." });
+      }
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchData();
+    }, 31000);
+
+    return () => clearInterval(interval);
+  }, [data]);
 
   useEffect(() => {
     setFilteredBy(searchParams.get("linea"));
   }, [searchParams]);
 
-  // const fetchData = async () => {
-  //   const END_POINT = "https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple";
-  //   const QUERY_PARAMS = "?client_id=cb6b18c84b3b484d98018a791577axxx&client_secret=3e3DB105Fbf642Bf88d5eeB8783EExxx";
-
-  //   try {
-  //     const res = await fetch(END_POINT + QUERY_PARAMS);
-  //     if (res.ok) {
-  //       const json = await res.json();
-  //       setIsLoading(false);
-  //       return setData(json);
-  //     }
-  //     throw new Error(res.status);
-  //   } catch (err) {
-  //     return setData({ error: err.message });
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     fetchData();
-  //   }, 31000);
-
-  //   return () => clearInterval(interval);
-  // }, [data]);
-
   const listOfBusLines = useMemo(() => {
     return (
-      data && Array.from(new Set(data.map((item) => item.route_short_name)))
+      !data.error && Array.from(new Set(data.map((item) => item.route_short_name)))
     );
   }, [data])
 
   const filteredData = () => {
     return (
-      data && data
-        .filter(
-          item =>
-            item.route_short_name.toLowerCase() ===
+      !data.error && data
+        .filter(item =>
+          item.route_short_name.toLowerCase() ===
             (filteredBy
               ? filteredBy.toLowerCase()
               : listOfBusLines[0].toLowerCase()
-          )
+            )
         )
     );
   }
@@ -142,7 +142,8 @@ const Traffic = () => {
         <button
           type={"button"}
           onClick={() => handleClick()}
-          className="cursor-pointer bg-OffBlack rounded-r shadow-md shadow-Gray25 p-[0.6rem] z-10 opacity-80 hover:opacity-100"
+          className="cursor-pointer bg-OffBlack rounded-r shadow-md shadow-Gray25 p-[0.6rem] z-10 opacity-80 
+          hover:opacity-100"
         >
           <FaSearch className="text-OffWhite" />
         </button>

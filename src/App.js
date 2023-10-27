@@ -24,7 +24,7 @@ function App() {
       element: <Traffic />,
     },
     {
-      path: "*",
+      path: "/practico-api/*",
       element: <Error data={{ error: "Pagina no encontrada" }} />,
     }
   ]);

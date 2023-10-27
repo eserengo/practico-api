@@ -42,23 +42,19 @@ const TransitMap = ({ data }) => {
                   className: "icon bg-orange-500 z-0",
                   html: ReactDOMServer.renderToString(
                     <FaBusAlt
-                      className="w-8 h-8 text-OffBlack border-[3px] border-orange-500 rounded-2xl bg-OffWhite p-1
-                      -translate-x-[1px] -translate-y-[1px] z-10"
+                      className="w-8 h-8 text-OffBlack border-[3px] border-orange-500 rounded-2xl 
+                      bg-OffWhite p-1 -translate-x-[1px] -translate-y-[1px] z-10"
                     />
                   ),
-                  popupAnchor: [9, 0],
+                  popupAnchor: [9, -1],
                 })}
               >
                 <Popup> 
-                  <div className="text-[0.6rem] text-OffBlack -my-1 -ml-3">
-                    <span className="font-bold">Linea:</span>{" "}
-                    {bondi.route_short_name} <br />
-                    <span className="font-bold">Empresa:</span>{" "}
-                    {bondi.agency_name} <br />
-                    <span className="font-bold">Destino:</span>{" "}
-                    {bondi.trip_headsign} <br />
-                    <span className="font-bold">Velocidad:</span>{" "}
-                    {bondi.speed.toFixed(2)} <br />
+                  <div className="text-xs text-OffBlack -my-1 -ml-3">
+                    Linea:{" "}{bondi.route_short_name} <br />
+                    Empresa:{" "}{bondi.agency_name} <br />
+                    Destino:{" "}{bondi.trip_headsign} <br />
+                    Velocidad:{" "}{bondi.speed.toFixed(2)}
                   </div>
                 </Popup>
               </Marker>

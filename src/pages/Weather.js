@@ -18,20 +18,19 @@ const Weather = () => {
 
   useEffect(() => {
     (async function fetchData() {
-      const END_POINT = "https://api.open-meteo.com/v1/forecast";
-      const QUERY_PARAMS =
-          "?latitude=-34.6131&longitude=-58.3772&hourly=temperature_2m,relativehumidity_2m,visibility&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&current_weather=true&timezone=America%2FSao_Paulo&forecast_days=1";
+      const API_ENDPOINT = "https://api.open-meteo.com/v1/forecast";
+      const API_QUERY_PARAMS = "?latitude=-34.6131&longitude=-58.3772&hourly=temperature_2m,relativehumidity_2m,visibility&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&current_weather=true&timezone=America%2FSao_Paulo&forecast_days=1";
 
       try {
-        const res = await fetch(END_POINT + QUERY_PARAMS);
-        if (res.ok) {
-          const json = await res.json();
+        const response = await fetch(API_ENDPOINT + API_QUERY_PARAMS);
+        if (response.ok) {
+          const json = await response.json();
           setIsLoading(false);
           return setData(json);
         }
-        throw new Error(res.status);
+        throw new Error();
       } catch (err) {
-        return setData({ error: err.message });
+        return setData({ error: "No se pudo obtener datos." });
       }
     }
     )();
@@ -64,7 +63,7 @@ const Weather = () => {
             </main>
         }
       </>
-      : <Error data={data} />
+      : <Error data={ data } />
   )
 }
 

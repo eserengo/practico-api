@@ -1,7 +1,7 @@
 # Dashboard
 
 ## Descripción del proyecto:
-Es un dashboard de clima en vivo creado con **React**.
+Es un dashboard de clima y líneas de colectivos, en vivo de la región del AMBA, creado con **React**.
 
 ## Versión en vivo:
 <https://eserengo.github.io/practico-api/>
