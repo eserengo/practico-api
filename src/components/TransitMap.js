@@ -4,6 +4,11 @@ import * as ReactDOMServer from "react-dom/server"
 import { FaBusAlt } from "react-icons/fa"
 import PropTypes from "prop-types"
 
+/* El componente que renderiza el mapa.
+Las funciones averrage.. devuelven el promedio de latitud o longitud de todos los marcadores para poder centrar
+la vista del mapa. 
+*/
+
 const TransitMap = ({ data }) => {
 
   const averageLatitude = () => {

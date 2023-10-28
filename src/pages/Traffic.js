@@ -12,6 +12,13 @@ almacena el resultado en un hook de estado y lo envía a sus descendientes media
 Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta no es 
 exitosa.
 Cuando se reciben los datos se renderizan los componentes correspondientes.
+
+Opté por desarrollar un enfoque mixto, en principio se realiza la solicitud a la API, pero ya que esto puede
+fallar por varias razones, ya sea porque se cayó la API (poco probable), o porque esta no acepta las credenciales 
+o se llegó al límite de solicitudes disponibles (ya que todos usamos las mismas credenciales, es mucho mas probable), 
+o porque el usuario no tiene la extensión de CORS (recontra probable). Entonces pensé en implementar un respaldo  
+mediante dos bloques try-catch anidados, si por cualquiera de estas situaciones el fetch a la API falla, 
+el programa pasa a hacer un fetch a un archivo json estático, que contiene los datos de una llamada normal a la API.
 */
 
 const Traffic = () => {
@@ -64,11 +71,21 @@ const Traffic = () => {
     setFilteredBy(searchParams.get("linea"));
   }, [searchParams]);
 
+  /* Devuelve una lista con las líneas de colectivos sin repetir. Utiliza memo para no recalcular el valor a 
+  traves de los rerenderizados si la dependencia no cambia.
+  */
+
   const listOfBusLines = useMemo(() => {
     return (
       !data.error && Array.from(new Set(data.map((item) => item.route_short_name)))
     );
   }, [data])
+
+  /* Devuelve una lista con los datos filtrados por la línea de colectivos seleccionada (filteredBy), la cual 
+  es una variable de estado. Como en la primera iteración está vacía, usa el primer item de la lista de líneas de 
+  colectivos, por lo cual los datos que se envían al mapa siempre van a estar filtrados y este solo va 
+  a mostrar una sola línea de colectivos solamente.
+  */
 
   const filteredData = () => {
     return (
@@ -89,6 +106,8 @@ const Traffic = () => {
       Trafico
     </span>
   );
+
+  // El componente de menu desplegable para seleccionar una línea de colectivos.
 
   const LineSelect = () => {
     const handleChange = () => {
@@ -118,6 +137,8 @@ const Traffic = () => {
         </section>
     );
   }
+
+  // El componente de búsqueda de líneas de colectivos.
 
   const LineSearch = () => {
     const handleClick = () => {

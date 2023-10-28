@@ -2,8 +2,7 @@ import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { FiMenu, FiXCircle } from "react-icons/fi"
 
-/* Este componente muestra un pequeño menu en forma de hamburguesa que puede ser desplegado y contiene por ahora solamente
-links a las distintas páginas.
+/* Este componente muestra un pequeño menu que contiene links a las distintas páginas.
 La lógica se maneja mediante el hook de estado de React.
 */
 

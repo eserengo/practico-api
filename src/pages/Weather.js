@@ -9,7 +9,8 @@ import Highlights from "../components/Highlights.js"
 
 /* Esta es la página principal del clima. Maneja la solicitud a la API del clima mediante un hook de efecto, 
 almacena el resultado en un hook de estado y lo envía a sus descendientes mediante props.
-Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta no es exitosa.
+Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta 
+no es exitosa.
 Cuando se reciben los datos se renderizan los componentes correspondientes. */
 
 const Weather = () => {
