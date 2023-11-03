@@ -1,7 +1,8 @@
 # Dashboard
 
 ## Descripción del proyecto:
-Es un dashboard de clima y líneas de colectivos, en vivo de la región del AMBA, creado con **React**.
+Es un dashboard de líneas de colectivos, en vivo de la región del AMBA y de datos climáticos, en vivo de toda la 
+Repúbica Argentina.
 
 ## Versión en vivo:
 <https://eserengo.github.io/practico-api/>
@@ -12,6 +13,7 @@ Es un dashboard de clima y líneas de colectivos, en vivo de la región del AMBA
 ### API
 - Para los datos metereológicos [Weather Forecast API](https://open-meteo.com/en/docs)
 - Para los datos de transporte [API de transporte de la Ciudad de Buenos Aires](https://buenosaires.gob.ar/desarrollourbano/transporte/apitransporte)
+- Para los datos de geolocalización [API del Servicio de Normalización de Datos Geográficos](https://datosgobar.github.io/georef-ar-api/)
 
 ### Librerías externas:
 - Para los estilos [Tailwind CSS](https://tailwindcss.com/)

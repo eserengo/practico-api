@@ -49,7 +49,7 @@ El componente muestra una imagen de fondo ejemplificativa y texto oscuro o claro
 variable is_day es verdadera o falsa.
 */
 
-const Forecast = ({ data }) => {
+const Forecast = ({ data, location }) => {
   const date = () => {
     return data.current_weather && new Date(data.current_weather.time);
   };
@@ -475,6 +475,9 @@ const Forecast = ({ data }) => {
           </sup>
           <WiThermometer className="inline" />
         </h1>
+        <p className="text-xl text-center">
+          en {location}
+        </p> 
         <WeatherCode />
         <p className="text-xl text-center">
           {date() &&
@@ -517,6 +520,7 @@ const Forecast = ({ data }) => {
 
 Forecast.propTypes = {
   data: PropTypes.object,
+  location: PropTypes.string,
 };
 
 export default Forecast;

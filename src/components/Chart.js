@@ -43,7 +43,7 @@ const Chart = ({ data }) => {
     maintainAspectRatio: false,
     scales: {
       y: {
-        min: 0,
+        min: -20,
         max: 40,
         ticks: {
           stepSize: 10,

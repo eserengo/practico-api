@@ -24,6 +24,7 @@ el programa pasa a hacer un fetch a un archivo json estático, que contiene los 
 const Traffic = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filteredBy, setFilteredBy] = useState("");
+  const [isLive, setIsLive] = useState(true);
   const [data, setData] = useState([]);
   const filterRef = useRef(null);
   const filterId = useId();
@@ -32,31 +33,35 @@ const Traffic = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const fetchData = async () => {
-    const API_ENDPOINT = "https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple";
-    const API_QUERY_PARAMS = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`;
-    const JSON_FILE_URL = "trafficData.json";
+    if (isLive) {
+      const API_ENDPOINT = "https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple";
+      const API_QUERY_PARAMS = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`;
+      const JSON_FILE_URL = "trafficData.json";
 
-    try {
-      const response = await fetch(API_ENDPOINT + API_QUERY_PARAMS);
-      if (response.ok) {
-        const json = await response.json();
-        setIsLoading(false);
-        return setData(json);
-      }
-      throw new Error();
-    } catch (err) {
       try {
-        const response = await fetch(JSON_FILE_URL);
-        const json = await response.json();
-        if (json) {
+        const response = await fetch(API_ENDPOINT + API_QUERY_PARAMS);
+        if (response.ok) {
+          const json = await response.json();
           setIsLoading(false);
           return setData(json);
         }
         throw new Error();
       } catch (err) {
-        return setData({ error: "No se pudo obtener datos." });
+        try {
+          const response = await fetch(JSON_FILE_URL);
+          const json = await response.json();
+          if (json) {
+            setIsLoading(false);
+            setIsLive(false);
+            return setData(json);
+          }
+          throw new Error();
+        } catch (err) {
+          return setData({ error: "No se pudo obtener datos." });
+        }
       }
     }
+    return false;
   }
 
   useEffect(() => {
@@ -65,7 +70,7 @@ const Traffic = () => {
     }, 31000);
 
     return () => clearInterval(interval);
-  }, [data]);
+  }, );
 
   useEffect(() => {
     setFilteredBy(searchParams.get("linea"));
@@ -124,7 +129,7 @@ const Traffic = () => {
             name="lines"
             value={ filteredBy ? filteredBy : listOfBusLines[0] }
             onChange={() => handleChange()}
-            className="cursor-pointer text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1"
+            className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1"
           >
             {listOfBusLines.map((bondi, index) => {
               return (
@@ -158,12 +163,12 @@ const Traffic = () => {
           spellCheck={false}
           placeholder={"por ej. 7B ó 505R5"}
           onKeyUp={ (event) => event.key === "Enter" ? handleClick() : null }
-          className="text-OffBlack border border-OffBlack rounded-l shadow-md shadow-Gray25 -mt-[1px] p-1"
+          className="text-sm text-OffBlack border border-OffBlack rounded-l shadow-md shadow-Gray25 p-1"
         />
         <button
           type={"button"}
           onClick={() => handleClick()}
-          className="cursor-pointer bg-OffBlack rounded-r shadow-md shadow-Gray25 p-[0.6rem] z-10 opacity-80 
+          className="cursor-pointer bg-OffBlack rounded-r shadow-md shadow-Gray25 p-2 z-10 opacity-80 
           hover:opacity-100"
         >
           <FaSearch className="text-OffWhite" />
