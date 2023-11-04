@@ -12,7 +12,13 @@ import Locations from "../components/Locations.js"
 almacena el resultado en un hook de estado y lo envía a sus descendientes mediante props.
 Renderiza un mensaje temporal con un spinner mientras vuelve la solicitud o un mensaje de error si esta 
 no es exitosa.
-Cuando se reciben los datos se renderizan los componentes correspondientes. */
+Cuando se reciben los datos se renderizan los componentes correspondientes.
+Para el TP4 se incluye una nueva API que proporciona datos de geolocalización, se la llama al montarse el componente para 
+que proporcione los datos de la locación por defecto; y tambien se crea un nuevo componente hijo (Locations), que proporciona
+la posibilidad de cambiar la provincia y municipio. Si el usuario solo selecciona provincia, se muestran datos climáticos de 
+esa locación y a continuación da la posibilidad de elegir un municipio, si ese es el caso se muestran los datos climáticos 
+de ese municipio en particular.
+*/
 
 const Weather = () => {
   const [isLoading, setIsLoading] = useState(true);
