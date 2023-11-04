@@ -82,8 +82,8 @@ const Weather = () => {
             </main>
 
             : <main className="p-2 max-sm:mt-32 sm:mt-12">
-              <article className="w-full flex flex-col items-start justify-evenly gap-2 md:flex-row md:items-center
-                md:justify-start text-OffBlack mb-2 max-sm:mx-2">
+              <article className="w-full flex flex-col items-start justify-evenly gap-2 md:flex-row md:items-center md:justify-start
+              md:gap-4 text-OffBlack mb-2 max-sm:mx-2">
                 <Locations setLat={set$lat} setLon={set$lon} setLocation={setLocation} />
               </article>
               <article className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4 md:grid-rows-3">

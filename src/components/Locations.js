@@ -54,19 +54,29 @@ const Locations = ({setLat, setLon, setLocation }) => {
 
   useEffect(() => {
     if (filteredByState) {
-      const target = Object.values(statesData.provincias).filter(prov => prov.nombre === filteredByState);
-      setLat(target[0].centroide.lat);
-      setLon(target[0].centroide.lon);
-      setLocation(target[0].nombre);
+      if (statesData.provincias) {
+        const target = Array.from(statesData.provincias).filter(prov => prov.nombre.toLowerCase() === filteredByState.toLowerCase());
+        setLat(target[0].centroide.lat);
+        setLon(target[0].centroide.lon);
+        setLocation(target[0].nombre);
+      } else {
+        setLocation("Error: No se pudo obtener localización.");
+        setFilteredByState("");
+      }
     }
   }, [filteredByState])
 
   useEffect(() => {
     if (filteredByCity) {
-      const target = Object.values(citiesData.municipios).filter(muni => muni.nombre === filteredByCity);
-      setLat(target[0].centroide.lat);
-      setLon(target[0].centroide.lon);
-      setLocation(`${target[0].nombre}, ${filteredByState}`);
+      if (citiesData.municipios) {
+        const target = Array.from(citiesData.municipios).filter(muni => muni.nombre.toLowerCase() === filteredByCity.toLowerCase());
+        setLat(target[0].centroide.lat);
+        setLon(target[0].centroide.lon);
+        setLocation(`${target[0].nombre}, ${filteredByState}`);
+      } else {
+        setLocation("Error: No se pudo obtener localización.");
+        setFilteredByCity("");
+      }
     }
   }, [filteredByCity])
 
@@ -96,60 +106,63 @@ const Locations = ({setLat, setLon, setLocation }) => {
   }
 
   const handleStateChange = () => {
-    setSearchParams(searchParams => {
-      searchParams.set("provincia", statesRef.current.value);
-      searchParams.delete("municipio");
-      return searchParams;
-    });
+    if (statesRef.current.value) {
+      setSearchParams(searchParams => {
+        searchParams.set("provincia", statesRef.current.value);
+        searchParams.delete("municipio");
+        return searchParams;
+      });
+    }
+    return false;
   }
 
   const handleCityChange = () => {
-    setSearchParams(searchParams => {
-      searchParams.set("municipio", citiesRef.current.value);
-      return searchParams;
-    });
+    if (citiesRef.current.value) {
+      setSearchParams(searchParams => {
+        searchParams.set("municipio", citiesRef.current.value);
+        return searchParams;
+      });
+    }
+    return false;
   }
 
   return (
     !statesData.error
       ? statesData.provincias &&
         <>
-          <section className="flex flex-col items-start justify-evenly sm:flex-row sm:items-center sm:justify-start z-10 
-          w-full md:w-1/2">
-            <label htmlFor={statesId} className="text-OffBlack me-2">Seleccionar provincia:</label>
-            <select
-              ref={statesRef}
-              id={statesId}
-              name="states"
-              value={ filteredByState }
-              placeholder="Seleccione una provincia"
-              onChange={() => handleStateChange()}
-              className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1"
-            >
-              { listOfStates() && listOfStates()
-                .map((prov, index) => {
-                  return (
-                    <option key={`state_${index}`} value={prov}>
-                      {prov}
-                    </option>
-                  );
-              })}
-            </select>
-          </section>
+          <p className="text-sm text-OffBlack">Para cambiar la localización:</p>
+          <label htmlFor={statesId} className="hidden">Seleccionar provincia:</label>
+          <select
+            ref={statesRef}
+            id={statesId}
+            name="states"
+            value={ filteredByState }
+            onChange={() => handleStateChange()}
+            className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1 z-10"
+          >
+            <option value={""} className="text-Gray75"> -- Seleccione una provincia --</option>
+            { listOfStates() && listOfStates()
+              .map((prov, index) => {
+                return (
+                  <option key={`state_${index}`} value={prov}>
+                    {prov}
+                  </option>
+                );
+            })}
+          </select>
           { !citiesData.error
             ? filteredByState &&
-              <section className="flex flex-col items-start justify-evenly sm:flex-row sm:items-center sm:justify-start z-10 
-              w-full md:w-1/2">
-                <label htmlFor={citiesId} className="text-OffBlack me-2">Seleccionar municipio:</label>
+              <>
+                <label htmlFor={citiesId} className="hidden">Seleccionar municipio:</label>
                 <select
                   ref={citiesRef}
                   id={citiesId}
                   name="cities"
-                  value={filteredByCity}
-                  placeholder="Seleccione un municipio"
+                  value={ filteredByCity }
                   onChange={() => handleCityChange()}
-                  className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1"
+                  className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1 z-10"
                 >
+                  <option value={""} className="text-Gray75"> -- Seleccione un municipio --</option>
                   { listOfCities() && listOfCities()
                     .map((muni, index) => {
                       return (
@@ -160,11 +173,11 @@ const Locations = ({setLat, setLon, setLocation }) => {
                     })
                   }
                 </select>
-              </section>
-            : <p className="text-red-500">Error: { citiesData.error }</p>
+              </>
+            : <p className="text-red-600">Error: { citiesData.error }</p>
           }
         </>
-      : <p className="text-red-500">Error: { statesData.error }</p>
+      : <p className="text-red-600">Error: { statesData.error }</p>
   )
 }
 
@@ -173,6 +186,5 @@ Locations.propTypes = {
   setLon: PropTypes.func,
   setLocation: PropTypes.func,
 };
-
 
 export default Locations;

@@ -475,9 +475,18 @@ const Forecast = ({ data, location }) => {
           </sup>
           <WiThermometer className="inline" />
         </h1>
-        <p className="text-xl text-center">
-          en {location}
-        </p> 
+        { location.includes("Error")
+          ? (
+            <p className="text-xl text-center text-red-600">
+              {location}
+            </p>
+          )
+          : (
+            <p className="text-xl text-center">
+              en {location}
+            </p> 
+          )
+        }        
         <WeatherCode />
         <p className="text-xl text-center">
           {date() &&
