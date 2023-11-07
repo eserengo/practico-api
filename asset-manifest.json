@@ -1,18 +1,28 @@
 {
   "files": {
-    "main.css": "/practico-api/static/css/main.3f510c36.css",
-    "main.js": "/practico-api/static/js/main.dbfcc63e.js",
+    "main.css": "/practico-api/static/css/main.e4c6f2d9.css",
+    "main.js": "/practico-api/static/js/main.0f482fea.js",
+    "static/media/dia-lluvioso.png": "/practico-api/static/media/dia-lluvioso.4f50dc64a5dc6e0879b8.png",
+    "static/media/noche-lluvioso.png": "/practico-api/static/media/noche-lluvioso.ad14d3879aecdbb1caa1.png",
+    "static/media/noche-nieve.png": "/practico-api/static/media/noche-nieve.b82d0379286b23051055.png",
+    "static/media/dia-nublado.png": "/practico-api/static/media/dia-nublado.2cb958dfb06e5a1df2ab.png",
     "static/media/bg-traffic.jpg": "/practico-api/static/media/bg-traffic.7287844e3b14f73fbb09.jpg",
+    "static/media/dia-tormenta.png": "/practico-api/static/media/dia-tormenta.2861f5a08872c287451c.png",
     "static/media/tristeza-mensaje-de-error.png": "/practico-api/static/media/tristeza-mensaje-de-error.7ce8b7a4c01b0f282fa6.png",
-    "static/media/bg-image-nighttime.jpg": "/practico-api/static/media/bg-image-nighttime.600bc441e1778b3818db.jpg",
-    "static/media/bg-image-daytime.jpg": "/practico-api/static/media/bg-image-daytime.8aa1a8892d9ce1817ec4.jpg",
+    "static/media/dia-niebla.png": "/practico-api/static/media/dia-niebla.08292b7e2eb530fcda8b.png",
+    "static/media/noche-despejado.png": "/practico-api/static/media/noche-despejado.e71871626a6b8098e8d9.png",
+    "static/media/noche-nublado.png": "/practico-api/static/media/noche-nublado.ff1aa27dd861584b652e.png",
+    "static/media/dia-nieve.png": "/practico-api/static/media/dia-nieve.dae12a3e58b9754aab29.png",
+    "static/media/noche-tormenta.png": "/practico-api/static/media/noche-tormenta.a4cda0eace9193d1bdd5.png",
+    "static/media/dia-despejado.png": "/practico-api/static/media/dia-despejado.ab9f00d732fe3510aa04.png",
     "static/media/bg-weather.jpg": "/practico-api/static/media/bg-weather.f46641fad7f5b427a2db.jpg",
+    "static/media/noche-niebla.png": "/practico-api/static/media/noche-niebla.fdb7b0eede3496412459.png",
     "index.html": "/practico-api/index.html",
-    "main.3f510c36.css.map": "/practico-api/static/css/main.3f510c36.css.map",
-    "main.dbfcc63e.js.map": "/practico-api/static/js/main.dbfcc63e.js.map"
+    "main.e4c6f2d9.css.map": "/practico-api/static/css/main.e4c6f2d9.css.map",
+    "main.0f482fea.js.map": "/practico-api/static/js/main.0f482fea.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f510c36.css",
-    "static/js/main.dbfcc63e.js"
+    "static/css/main.e4c6f2d9.css",
+    "static/js/main.0f482fea.js"
   ]
 }
