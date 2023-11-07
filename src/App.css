@@ -10,18 +10,6 @@
     font-size: 16px;
   }
 
-  .daytime {
-    background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
-      url("./assets/bg-image-daytime.jpg");
-  }
-  
-  .nighttime {
-    background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
-      url("./assets/bg-image-nighttime.jpg");
-  }
-
   .weather {
     background-image: 
       linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
@@ -32,6 +20,54 @@
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
       url("./assets/bg-traffic.jpg");
+  }
+
+  .noche-despejado {
+    background-image: url("./assets/noche-despejado.png");
+  }
+
+  .noche-nublado {
+    background-image: url("./assets/noche-nublado.png");
+  }
+
+  .noche-niebla {
+    background-image: url("./assets/noche-niebla.png");
+  }
+
+  .noche-lluvioso {
+    background-image: url("./assets/noche-lluvioso.png");
+  }
+
+  .noche-nieve {
+    background-image: url("./assets/noche-nieve.png");
+  }
+
+  .noche-tormenta {
+    background-image: url("./assets/noche-tormenta.png");
+  }
+
+  .dia-despejado {
+    background-image: url("./assets/dia-despejado.png");
+  }
+
+  .dia-nublado {
+    background-image: url("./assets/dia-nublado.png");
+  }
+
+  .dia-niebla {
+    background-image: url("./assets/dia-niebla.png");
+  }
+
+  .dia-lluvioso {
+    background-image: url("./assets/dia-lluvioso.png");
+  }
+
+  .dia-nieve {
+    background-image: url("./assets/dia-nieve.png");
+  }
+
+  .dia-tormenta {
+    background-image: url("./assets/dia-tormenta.png");
   }
 
   .custom-bg {

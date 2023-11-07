@@ -83,7 +83,6 @@ const Locations = ({setLat, setLon, setLocation }) => {
         setLocation(target.nombre);
         } else {
           setLocation("Error: No se pudo obtener la localización.");
-          setFilteredByState("");
         }
       } else {
         setLocation("Cargando localización...");
@@ -101,7 +100,6 @@ const Locations = ({setLat, setLon, setLocation }) => {
           setLocation(`${target.nombre}, ${filteredByState}`);
         } else {
           setLocation("Error: No se pudo obtener la localización.");
-          setFilteredByCity("");
         }
       } else {
         setLocation("Cargando localización...");
@@ -110,8 +108,11 @@ const Locations = ({setLat, setLon, setLocation }) => {
   }, [filteredByCity, citiesData.municipios])
 
   useEffect(() => {
-    searchParams.get("provincia") && setFilteredByState(searchParams.get("provincia"));
-    searchParams.get("municipio") && setFilteredByCity(searchParams.get("municipio"));
+    (searchParams.get("provincia") !== filteredByState) && 
+      setFilteredByState(searchParams.get("provincia"));
+    searchParams.get("municipio")
+      ? setFilteredByCity(searchParams.get("municipio"))
+      : setFilteredByCity("");
   }, [searchParams])
 
   const listOfStates = () => {
@@ -159,17 +160,17 @@ const Locations = ({setLat, setLon, setLocation }) => {
     !statesData.error
       ? statesData.provincias &&
         <>
-          <p className="text-sm text-OffBlack">Para cambiar la localización:</p>
+          <h4 className="text-sm text-OffBlack">Para cambiar la localización:</h4>
           <label htmlFor={statesId} className="hidden">Seleccionar provincia:</label>
           <select
             ref={statesRef}
             id={statesId}
             name="states"
-            value={ filteredByState }
+            value={ filteredByState ? filteredByState : "" }
             onChange={() => handleStateChange()}
             className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1 z-10"
           >
-            <option value={""} className="text-Gray75"> -- Seleccione una provincia --</option>
+            <option value={""} className="text-Gray75"> -- Seleccione una provincia -- </option>
             { listOfStates() && listOfStates()
               .map((prov, index) => {
                 return (
@@ -177,7 +178,7 @@ const Locations = ({setLat, setLon, setLocation }) => {
                     {prov}
                   </option>
                 );
-            })}
+              })}
           </select>
           { !citiesData.error
             ? filteredByState &&
@@ -187,11 +188,11 @@ const Locations = ({setLat, setLon, setLocation }) => {
                   ref={citiesRef}
                   id={citiesId}
                   name="cities"
-                  value={ filteredByCity }
+                  value={ filteredByCity ? filteredByCity : "" }
                   onChange={() => handleCityChange()}
                   className="cursor-pointer text-sm text-OffBlack border border-OffBlack rounded shadow-md shadow-Gray25 pb-1 z-10"
                 >
-                  <option value={""} className="text-Gray75"> -- Seleccione un municipio --</option>
+                  <option value={""} className="text-Gray75"> -- Seleccione un municipio -- </option>
                   { listOfCities() && listOfCities()
                     .map((muni, index) => {
                       return (
@@ -204,7 +205,7 @@ const Locations = ({setLat, setLon, setLocation }) => {
                 </select>
               </>
             : <p className="text-red-600">Error: { citiesData.error }</p>
-          }
+        }
         </>
       : <p className="text-red-600">Error: { statesData.error }</p>
   )

@@ -111,13 +111,13 @@ const Highlights = ({ data }) => {
   };
 
   const humidity = () => {
-    const currentHour = data.current_weather && data.current_weather.time.slice(-5).slice(0, 2);
-    return data.hourly && data.hourly.relativehumidity_2m[currentHour];
+    const currentHour = data.current_weather.time && data.current_weather.time.slice(-5).slice(0, 2);
+    return data.hourly.relativehumidity_2m.at(currentHour);
   };
 
   const visibility = () => {
-    const currentHour = data.current_weather && data.current_weather.time.slice(-5).slice(0, 2);
-    return data.hourly && data.hourly.visibility[currentHour];
+    const currentHour = data.current_weather.time && data.current_weather.time.slice(-5).slice(0, 2);
+    return data.hourly.visibility.at(currentHour);
   };
 
   return (
@@ -129,15 +129,18 @@ const Highlights = ({ data }) => {
           return (
             <div
               key={`card_${index}`}
-              className="relative flex flex-col items-start justify-evenly gap-2 border border-OffBlack
-              rounded-md shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[10rem] bg-gradient-to-tr
-              from-orange-500 to-orange-300"
+              className={`relative flex flex-col items-start justify-evenly gap-2 border border-OffBlack
+              rounded-md shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[10rem] 
+              ${!data.current_weather.is_day
+                  ? "bg-gradient-to-tr from-indigo-300 to-indigo-600 text-OffWhite"
+                  : "bg-gradient-to-tr from-orange-600 to-orange-300 text-OffBlack"
+              }`}
             >
-              <h3 className="text-OffBlack z-10 uppercase">{item.title}</h3>
-              <p className="text-sky-700 text-[2.5rem] font-bold z-10">
+              <h3 className="z-10 uppercase">{item.title}</h3>
+              <p className="text-[2.5rem] font-bold z-10">
                 {item.value}
               </p>
-              <p className="text-OffBlack text-xl z-10">{item.level}</p>
+              <p className="text-xl z-10">{item.level}</p>
               <span className="text-OffWhite opacity-25 absolute -top-4 left-1/3 text-[12rem] z-0">
                 {item.icon}
               </span>

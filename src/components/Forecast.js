@@ -44,9 +44,13 @@ de la librería Weather Icons. Dependiendo de si la variable is_day es verdadera
 o nocturno. Algunos íconos son indistintos.
 - La fecha y la hora.
 - Temperaturas máxima y mínima del día.
-
 El componente muestra una imagen de fondo ejemplificativa y texto oscuro o claro dependiendo nuevamente si la 
 variable is_day es verdadera o falsa.
+
+Para el TP4 se agregan:
+- La locación de provincia y municipio.
+- Imágenes ejemplificativas de fondo según el tipo de clima que devuelve la API, porque antes solo había imágenes de 
+fondo de día o de noche, pero no ejemplificaban el tipo de clima.
 */
 
 const Forecast = ({ data, location }) => {
@@ -456,15 +460,84 @@ const Forecast = ({ data, location }) => {
     }
   };
 
+  const bgDisplay = () => {
+    if (!data.current_weather.is_day) {
+      switch (data.current_weather.weathercode) {
+        case 0:
+        case 1:
+          return "noche-despejado text-OffWhite";
+        case 2:
+        case 3:
+          return "noche-nublado text-OffWhite";
+        case 45:
+        case 48:
+          return "noche-niebla text-OffWhite";
+        case 51:
+        case 53:
+        case 55:
+        case 56:
+        case 57:
+        case 61:
+        case 63:
+        case 65:
+        case 66:
+        case 67:
+        case 80:
+        case 81:
+        case 82:
+          return "noche-lluvioso text-OffWhite";
+        case 71:
+        case 73:
+        case 75:
+        case 77:
+        case 85:
+        case 86:
+          return "noche-nieve text-OffWhite";
+        default:
+          return "noche-tormenta text-OffWhite";
+      }
+    } else {
+      switch (data.current_weather.weathercode) {
+        case 0:
+        case 1:
+          return "dia-despejado text-OffBlack";
+        case 2:
+        case 3:
+          return "dia-nublado text-OffBlack";
+        case 45:
+        case 48:
+          return "dia-niebla text-OffBlack";
+        case 51:
+        case 53:
+        case 55:
+        case 56:
+        case 57:
+        case 61:
+        case 63:
+        case 65:
+        case 66:
+        case 67:
+        case 80:
+        case 81:
+        case 82:
+          return "dia-lluvioso text-OffBlack";
+        case 71:
+        case 73:
+        case 75:
+        case 77:
+        case 85:
+        case 86:
+          return "dia-nieve text-OffBlack";
+        default:
+          return "dia-tormenta text-OffBlack";
+      }
+    }
+  }
+
   return (
     <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-4 md:row-span-3 border
       border-OffBlack rounded-md shadow-md shadow-Gray25 max-sm:mx-2 sm:me-2 sm:mb-2 sm:mt-10 lg:mb-4 xl:mb-6">
-      <section className={`flex flex-col items-center justify-evenly gap-4 p-2 h-full ${
-          !data.current_weather.is_day
-            ? "custom-bg nighttime text-OffWhite"
-            : "custom-bg daytime text-OffBlack"
-        }`}
-      >
+      <section className={`flex flex-col items-center justify-evenly gap-4 p-2 h-full custom-bg ${bgDisplay()}`}>
         <p className="text-xl">
           {!data.current_weather.is_day ? "Buenas noches" : "Buenos dias"}
         </p> 
@@ -497,10 +570,10 @@ const Forecast = ({ data, location }) => {
         </p>
         <aside
           className={`flex flex-row flex-wrap items-center justify-evenly rounded-md border border-OffBlack shadow-md 
-          shadow-Gray25 divide-x p-4 bg-gradient-to-r from-orange-600 via-pink-400 via-40% to-sky-800 w-full 
+          shadow-Gray25 divide-x p-4
           ${!data.current_weather.is_day
-              ? "divide-OffWhite"
-              : "divide-OffBlack"
+            ? "divide-OffWhite bg-gradient-to-r from-indigo-200 via-indigo-400 to-indigo-800"
+            : "divide-OffBlack bg-gradient-to-r from-orange-700 via-orange-400 to-orange-200"
           }`}
           >
           <div className="flex flex-col items-center justify-between gap-2 pe-4 w-1/2 h-full">
