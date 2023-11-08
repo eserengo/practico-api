@@ -22,7 +22,7 @@ ChartJS.register(
 /* Este componente muestra el gráfico de barras con las temperaturas por hora. Esta desarrollado con la 
 librería Chart.JS */
 
-const Chart = ({ data }) => {
+const TodaysChart = ({ data }) => {
   const inputData = () => {
     return (
       data.current_weather && {
@@ -31,7 +31,7 @@ const Chart = ({ data }) => {
           {
             label: data.hourly_units.temperature_2m,
             data: data.hourly.temperature_2m,
-            backgroundColor: "#fcfcfc",
+            backgroundColor: `${!data.current_weather.is_day ? "#fcfcfc" : "#030303"}`,
           },
         ],
       }
@@ -47,7 +47,7 @@ const Chart = ({ data }) => {
         max: 40,
         ticks: {
           stepSize: 20,
-          color: "#fcfcfc",
+          color: `${!data.current_weather.is_day ? "#fcfcfc" : "#030303"}`,
           font: {
             family: "Oswald",
             size: "16px",
@@ -62,7 +62,7 @@ const Chart = ({ data }) => {
       },
       x: {
         ticks: {
-          color: "#fcfcfc",
+          color: `${!data.current_weather.is_day ? "#fcfcfc" : "#030303"}`,
           font: {
             family: "Oswald",
             size: "8px",
@@ -107,8 +107,8 @@ const Chart = ({ data }) => {
   );
 };
 
-Chart.propTypes = {
+TodaysChart.propTypes = {
   data: PropTypes.object,
 };
 
-export default Chart;
+export default TodaysChart;

@@ -3,9 +3,9 @@ import { FaCloudSun } from "react-icons/fa"
 import Menu from "../components/Menu.js"
 import Spinner from "../components/Spinner.js"
 import Error from "../components/Error.js"
-import Forecast from "../components/Forecast.js"
-import Chart from "../components/Chart.js"
-import Highlights from "../components/Highlights.js"
+import TodaysInfo from "../components/TodaysInfo.js"
+import TodaysChart from "../components/TodaysChart.js"
+import TodaysHighlights from "../components/TodaysHighlights.js"
 import Locations from "../components/Locations.js"
 
 /* Esta es la página principal del clima. Maneja la solicitud a la API del clima mediante un hook de efecto, 
@@ -97,9 +97,9 @@ const Weather = () => {
                 <Locations setLat={set$lat} setLon={set$lon} setLocation={setLocation} />
               </article>
               <article className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4 md:grid-rows-3">
-                <Forecast data={ data } location={ location } />
-                <Chart data={ data } />
-                <Highlights data={ data } />
+                <TodaysInfo data={ data } location={ location } />
+                <TodaysChart data={ data } />
+                <TodaysHighlights data={ data } />
               </article>
             </main>
         }

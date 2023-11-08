@@ -18,7 +18,7 @@ calculan este nivel.
 Las tarjetas están posicionadas con css grid para lograr mayor responsividad.
 */
 
-const Highlights = ({ data }) => {
+const TodaysHighlights = ({ data }) => {
   const filteredData = () => {
     return (
       data.current_weather && [
@@ -152,8 +152,8 @@ const Highlights = ({ data }) => {
   );
 };
 
-Highlights.propTypes = {
+TodaysHighlights.propTypes = {
   data: PropTypes.object,
 };
 
-export default Highlights;
+export default TodaysHighlights;
