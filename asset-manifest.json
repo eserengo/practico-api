@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/practico-api/static/css/main.e4c6f2d9.css",
-    "main.js": "/practico-api/static/js/main.d3949745.js",
+    "main.css": "/practico-api/static/css/main.3af5060a.css",
+    "main.js": "/practico-api/static/js/main.0ea17443.js",
     "static/media/dia-lluvioso.png": "/practico-api/static/media/dia-lluvioso.4f50dc64a5dc6e0879b8.png",
     "static/media/noche-lluvioso.png": "/practico-api/static/media/noche-lluvioso.ad14d3879aecdbb1caa1.png",
     "static/media/noche-nieve.png": "/practico-api/static/media/noche-nieve.b82d0379286b23051055.png",
@@ -18,11 +18,11 @@
     "static/media/bg-weather.jpg": "/practico-api/static/media/bg-weather.f46641fad7f5b427a2db.jpg",
     "static/media/noche-niebla.png": "/practico-api/static/media/noche-niebla.fdb7b0eede3496412459.png",
     "index.html": "/practico-api/index.html",
-    "main.e4c6f2d9.css.map": "/practico-api/static/css/main.e4c6f2d9.css.map",
-    "main.d3949745.js.map": "/practico-api/static/js/main.d3949745.js.map"
+    "main.3af5060a.css.map": "/practico-api/static/css/main.3af5060a.css.map",
+    "main.0ea17443.js.map": "/practico-api/static/js/main.0ea17443.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4c6f2d9.css",
-    "static/js/main.d3949745.js"
+    "static/css/main.3af5060a.css",
+    "static/js/main.0ea17443.js"
   ]
 }
