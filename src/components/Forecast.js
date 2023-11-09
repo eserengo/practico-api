@@ -9,7 +9,7 @@ import PropTypes from "prop-types"
 
 /* El componente es responsable de mostrar los datos del pronóstico del tiempo para una ubicación específica. 
 Incluye funciones para obtener y presentar la información meteorológica, gestionar las interacciones del usuario 
-y renderizar el pronóstico.
+y renderizar el pronóstico. Se muestra el pronóstico para cinco días a partir del día de hoy.
 */
 
 const Forecast = ({ lat, lon, location, isForecastOn, setIsForecastOn }) => {

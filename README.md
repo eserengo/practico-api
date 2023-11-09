@@ -35,6 +35,16 @@ Por sus valiosas contribuciones y compañerismo.
 
 Inspiración.
 
+#### Para el TP4, se agrega: [^1]
+- [x] Se crea un nuevo componente locations que muestra dos elementos select para poder elegir provincia y municipio.
+- [x] Una nueva API para obtener la geolocalización de provincias y municipios.
+- [x] Una nueva característica, pronóstico, que muestra datos climáticos para los próximos cinco días.
+- [x] Se renombran componentes y se mueve weathercode a un componente separado.
+- [x] Se cambia la paleta de colores, mostrando colores fríos o colores cálidos, dependiendo de si es de día o de noche
+en la locación seleccionada.
+- [x] Nuevas imágenes de fondo ejemplificativas para tipo de clima, con versiones nocturnas y diurnas. Se usan tanto en
+el componente info de clima como en cada uno de los días del componente pronóstico.
+
 🤝 Contribuciones <br>
 ¡Las contribuciones, problemas y solicitudes de funciones son bienvenidas! No dudes en consultar la página de problemas.
 
@@ -43,3 +53,6 @@ Muestra tu apoyo <br>
 
 📝 Licencia <br>
 Este proyecto tiene Licencia [MIT](https://github.com/eserengo/practico-api/blob/main/LICENSE)
+
+
+[^1]: Todos los cambios se realizaron en la página de clima.
