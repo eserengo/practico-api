@@ -124,7 +124,12 @@ const TodaysInfo = ({ data, location }) => {
             </p> 
           )
         }
-        <WeatherCode data={data} />
+        <WeatherCode
+          is_day={data.current_weather.is_day}
+          code={data.current_weather.weathercode}
+          text={"text-xl text-center"}
+          icon={"text-8xl mx-auto"}
+        />
         <p className="text-xl text-center">
           {date() &&
             date().toLocaleString("es", {

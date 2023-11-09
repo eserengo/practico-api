@@ -159,8 +159,8 @@ const Locations = ({setLat, setLon, setLocation }) => {
   return (
     !statesData.error
       ? statesData.provincias &&
-        <>
-          <h4 className="text-sm text-OffBlack">Para cambiar la localización:</h4>
+      <section className="flex flex-col items-start justify-evenly gap-2 md:flex-row md:items-center md:justify-start">
+          <h4 className="text-sm text-OffBlack">Cambiar localización:</h4>
           <label htmlFor={statesId} className="hidden">Seleccionar provincia:</label>
           <select
             ref={statesRef}
@@ -206,7 +206,7 @@ const Locations = ({setLat, setLon, setLocation }) => {
               </>
             : <p className="text-red-600">Error: { citiesData.error }</p>
         }
-        </>
+        </section>
       : <p className="text-red-600">Error: { statesData.error }</p>
   )
 }

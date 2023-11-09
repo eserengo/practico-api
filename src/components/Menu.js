@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
-import { FiMenu, FiXCircle } from "react-icons/fi"
+import { FiMenu, FiX } from "react-icons/fi"
 
 /* Este componente muestra un pequeño menu que contiene links a las distintas páginas.
 La lógica se maneja mediante el hook de estado de React.
@@ -18,11 +18,11 @@ const Menu = () => {
         !isActive      
           ? <FiMenu
               onClick={toggleIsActive}
-              className="inline cursor-pointer text-OffBlack sm:hidden"
+              className="inline cursor-pointer w-6 h-6 text-OffBlack sm:hidden"
             />
           : <ul className="flex flex-col items-end justify-center sm:hidden">
               <li onClick={toggleIsActive}>
-                <FiXCircle className="inline cursor-pointer text-OffBlack" />
+                <FiX className="inline cursor-pointer w-6 h-6 text-OffBlack" />
               </li>
               <li className="pt-1">
                 <NavLink

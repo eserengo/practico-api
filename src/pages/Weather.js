@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { FaCloudSun } from "react-icons/fa"
+import { RxMagnifyingGlass } from "react-icons/rx"
 import Menu from "../components/Menu.js"
 import Spinner from "../components/Spinner.js"
 import Error from "../components/Error.js"
@@ -7,6 +8,7 @@ import TodaysInfo from "../components/TodaysInfo.js"
 import TodaysChart from "../components/TodaysChart.js"
 import TodaysHighlights from "../components/TodaysHighlights.js"
 import Locations from "../components/Locations.js"
+import Forecast from "../components/Forecast.js"
 
 /* Esta es la página principal del clima. Maneja la solicitud a la API del clima mediante un hook de efecto, 
 almacena el resultado en un hook de estado y lo envía a sus descendientes mediante props.
@@ -22,10 +24,13 @@ de ese municipio en particular.
 También se cambió la paleta de colores: una paleta de colores fríos y tipografía clara con imágenes nocturnas, o una 
 paleta de colores cálidos, tipografía oscura e imágenes de fondo diurnas, dependiendo de si es de día o de noche en la 
 locación seleccionada.
+Por último se crea una nueva característica, pronóstico, que muestra 5 días con los siguientes datos: fecha, tipo de clima,
+temperatura máxima y mínima. Se accede al mismo a través de un botón en la página de clima.
 */
 
 const Weather = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isForecastOn, setIsForecastOn] = useState(false);
   const [$lat, set$lat] = useState(0);
   const [$lon, set$lon] = useState(0);
   const [location, setLocation] = useState("el AMBA");
@@ -79,6 +84,10 @@ const Weather = () => {
     </span>
   );
 
+  const toggleForecast = () => {
+    setIsForecastOn(!isForecastOn);
+  }
+
   return (
     data && !data.error
       ? <>
@@ -91,17 +100,28 @@ const Weather = () => {
               <h1 className="text-5xl font-bold text-OffBlack">Cargando...</h1>
             </main>
 
-            : <main className="p-2 max-sm:mt-32 sm:mt-12">
-              <article className="w-full flex flex-col items-start justify-evenly gap-2 md:flex-row md:items-center md:justify-start
-              md:gap-4 text-OffBlack mb-2 max-sm:mx-2">
-                <Locations setLat={set$lat} setLon={set$lon} setLocation={setLocation} />
-              </article>
-              <article className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4 md:grid-rows-3">
-                <TodaysInfo data={ data } location={ location } />
-                <TodaysChart data={ data } />
-                <TodaysHighlights data={ data } />
-              </article>
-            </main>
+            : !isForecastOn
+              ? <>
+                <header className="w-full flex flex-col items-start justify-evenly gap-4 sm:flex-row sm:items-end 
+                sm:justify-between text-OffBlack max-sm:mx-2 p-2 mt-32 sm:mt-12">
+                  <Locations setLat={set$lat} setLon={set$lon} setLocation={setLocation} />
+                  <section
+                    className="border border-OffBlack rounded shadow-md shadow-Gray75 z-10 py-0 px-4 opacity-80
+                    bg-gradient-to-r from-sky-600 to-sky-300 hover:cursor-pointer hover:opacity-100 hover:shadow-Gray25"
+                    onClick={() => toggleForecast()}>
+                    <span className="inline text-sm">Ver pronóstico</span>
+                    <RxMagnifyingGlass className="inline ms-1 mb-1 w-6 h-6" />
+                  </section>
+                </header>
+                <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4 
+                md:grid-rows-3 p-2 pe-0">
+                  <TodaysInfo data={ data } location={ location } />
+                  <TodaysChart data={ data } />
+                  <TodaysHighlights data={ data } />
+                </main>
+              </>
+
+              : <Forecast lat={$lat} lon={$lon} location={location} isForecastOn={isForecastOn} setIsForecastOn={setIsForecastOn} />
         }
       </>
       : <Error data={ data } />

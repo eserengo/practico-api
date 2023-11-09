@@ -1,5 +1,6 @@
-import { FaExclamationTriangle, FaArrowLeft } from "react-icons/fa"
+import { FaExclamationTriangle } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
+import { RxChevronLeft } from "react-icons/rx"
 import Menu from "./Menu"
 import tristeza from "../assets/tristeza-mensaje-de-error.png"
 import PropTypes from "prop-types"
@@ -32,17 +33,20 @@ const Error = ({ data }) => {
           <h2 className="text-bold text-3xl md:text-4xl text-OffBlack text-center">
             Disculpa, ha ocurrido un error.
           </h2>
-          <h3 className="text-bold text-2xl md:text-3xl text-red-600 text-center mt-4">
+          <h3 className="text-bold text-2xl md:text-3xl text-red-600 text-center my-4">
             { data.error }
           </h3>
           <button
             type={"button"}
             onClick={() => handleClick()}
-            className="text-OffBlack border border-OffBlack rounded-md py-2 px-8 mt-4 opacity-80 shadow-md shadow-Gray75
-            hover:opacity-100 hover:shadow-Gray25"
+            className="flex flex-row items-center opacity-60 text-Gray25 hover:opacity-100 hover:text-OffBlack"
           >
-            <FaArrowLeft className="inline me-2" />
-            Volver
+            <span className="me-2 border-2 border-OffBlack rounded shadow-md shadow-Gray25">
+              <RxChevronLeft className="w-10 h-8" />
+            </span>
+            <span className="text-2xl font-bold">
+              Volver
+            </span>
           </button>
         </section> 
         <figure className="bg-OffWhite sm:w-1/2">

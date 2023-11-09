@@ -35,402 +35,402 @@ import {
 } from "react-icons/wi"
 import PropTypes from "prop-types"
 
-const WeatherCode = ({ data }) => {
-  if (!data.current_weather.is_day) {
-    switch (data.current_weather.weathercode) {
+const WeatherCode = ({ is_day, code, text, icon }) => {
+  if (!is_day) {
+    switch (code) {
       case 1:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Mayormente despejado{" "}
-            <WiNightAltCloudyHigh className="text-8xl mx-auto" />
+            <WiNightAltCloudyHigh className={`${icon}`} />
           </span>
         );
       case 2:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Parcialmente nublado{" "}
-            <WiNightAltCloudy className="text-8xl mx-auto" />
+            <WiNightAltCloudy className={`${icon}`} />
           </span>
         );
       case 3:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nublado cubierto{" "}
-            <WiCloudy className="text-8xl mx-auto" />
+            <WiCloudy className={`${icon}`} />
           </span>
         );
       case 45:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Niebla{" "}
-            <WiFog className="text-8xl mx-auto" />
+            <WiFog className={`${icon}`} />
           </span>
         );
       case 48:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Niebla con escarcha{" "}
-            <WiSnowflakeCold className="text-8xl mx-auto" />
+            <WiSnowflakeCold className={`${icon}`} />
           </span>
         );
       case 51:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna ligera{" "}
-            <WiNightAltSprinkle className="text-8xl mx-auto" />
+            <WiNightAltSprinkle className={`${icon}`} />
           </span>
         );
       case 53:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna moderada{" "}
-            <WiNightAltShowers className="text-8xl mx-auto" />
+            <WiNightAltShowers className={`${icon}`} />
           </span>
         );
       case 55:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna intensa{" "}
-            <WiNightAltRain className="text-8xl mx-auto" />
+            <WiNightAltRain className={`${icon}`} />
           </span>
         );
       case 56:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna helada ligera{" "}
-            <WiNightAltSleet className="text-8xl mx-auto" />
+            <WiNightAltSleet className={`${icon}`} />
           </span>
         );
       case 57:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna helada intensa{" "}
-            <WiNightAltRainMix className="text-8xl mx-auto" />
+            <WiNightAltRainMix className={`${icon}`} />
           </span>
         );
       case 61:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias ligeras{" "}
-            <WiSprinkle className="text-8xl mx-auto" />
+            <WiSprinkle className={`${icon}`} />
           </span>
         );
       case 63:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias moderadas{" "}
-            <WiShowers className="text-8xl mx-auto" />
+            <WiShowers className={`${icon}`} />
           </span>
         );
       case 65:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias intensas{" "}
-            <WiRain className="text-8xl mx-auto" />
+            <WiRain className={`${icon}`} />
           </span>
         );
       case 66:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias heladas ligeras{" "}
-            <WiSleet className="text-8xl mx-auto" />
+            <WiSleet className={`${icon}`} />
           </span>
         );
       case 67:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias heladas intensas{" "}
-            <WiRainMix className="text-8xl mx-auto" />
+            <WiRainMix className={`${icon}`} />
           </span>
         );
       case 71:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas ligeras{" "}
-            <WiNightAltSnow className="text-8xl mx-auto" />
+            <WiNightAltSnow className={`${icon}`} />
           </span>
         );
       case 73:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas moderadas{" "}
-            <WiNightAltSnow className="text-8xl mx-auto" />
+            <WiNightAltSnow className={`${icon}`} />
           </span>
         );
       case 75:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas intensas{" "}
-            <WiSnow className="text-8xl mx-auto" />
+            <WiSnow className={`${icon}`} />
           </span>
         );
       case 77:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevizcas{" "}
-            <WiNightAltSleet className="text-8xl mx-auto" />
+            <WiNightAltSleet className={`${icon}`} />
           </span>
         );
       case 80:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias aisladas ligeras{" "}
-            <WiNightAltSprinkle className="text-8xl mx-auto" />
+            <WiNightAltSprinkle className={`${icon}`} />
           </span>
         );
       case 81:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias aisladas moderadas{" "}
-            <WiNightAltShowers className="text-8xl mx-auto" />
+            <WiNightAltShowers className={`${icon}`} />
           </span>
         );
       case 82:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias aisladas intensas{" "}
-            <WiNightAltRain className="text-8xl mx-auto" />
+            <WiNightAltRain className={`${icon}`} />
           </span>
         );
       case 85:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas aisladas ligeras{" "}
-            <WiNightAltSnow className="text-8xl mx-auto" />
+            <WiNightAltSnow className={`${icon}`} />
           </span>
         );
       case 86:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas aisladas intensas{" "}
-            <WiSnow className="text-8xl mx-auto" />
+            <WiSnow className={`${icon}`} />
           </span>
         );
       case 95:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Tormentas eléctricas{" "}
-            <WiNightAltLightning className="text-8xl mx-auto" />
+            <WiNightAltLightning className={`${icon}`} />
           </span>
         );
       case 96:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Tormentas eléctricas con granizo ligero{" "}
-            <WiNightAltSnowThunderstorm className="text-8xl mx-auto" />
+            <WiNightAltSnowThunderstorm className={`${icon}`} />
           </span>
         );
       case 99:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Tormentas eléctricas con granizo intenso{" "}
-            <WiNightAltStormShowers className="text-8xl mx-auto" />
+            <WiNightAltStormShowers className={`${icon}`} />
           </span>
         );
       default:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Despejado{" "}
-            <WiNightClear className="text-8xl mx-auto" />
+            <WiNightClear className={`${icon}`} />
           </span>
         );
     }
   } else {
-    switch (data.current_weather.weathercode) {
+    switch (code) {
       case 1:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Mayormente despejado{" "}
-            <WiDayCloudyHigh className="text-8xl mx-auto" />
+            <WiDayCloudyHigh className={`${icon}`} />
           </span>
         );
       case 2:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Parcialmente nublado{" "}
-            <WiDayCloudy className="text-8xl mx-auto" />
+            <WiDayCloudy className={`${icon}`} />
           </span>
         );
       case 3:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nublado cubierto{" "}
-            <WiCloudy className="text-8xl mx-auto" />
+            <WiCloudy className={`${icon}`} />
           </span>
         );
       case 45:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Niebla{" "}
-            <WiFog className="text-8xl mx-auto" />
+            <WiFog className={`${icon}`} />
           </span>
         );
       case 48:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Niebla con escarcha{" "}
-            <WiSnowflakeCold className="text-8xl mx-auto" />
+            <WiSnowflakeCold className={`${icon}`} />
           </span>
         );
       case 51:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna ligera{" "}
-            <WiDaySprinkle className="text-8xl mx-auto" />
+            <WiDaySprinkle className={`${icon}`} />
           </span>
         );
       case 53:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna moderada{" "}
-            <WiDayShowers className="text-8xl mx-auto" />
+            <WiDayShowers className={`${icon}`} />
           </span>
         );
       case 55:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna intensa{" "}
-            <WiDayRain className="text-8xl mx-auto" />
+            <WiDayRain className={`${icon}`} />
           </span>
         );
       case 56:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna helada ligera{" "}
-            <WiDaySleet className="text-8xl mx-auto" />
+            <WiDaySleet className={`${icon}`} />
           </span>
         );
       case 57:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             LLovizna helada intensa{" "}
-            <WiDayRainMix className="text-8xl mx-auto" />
+            <WiDayRainMix className={`${icon}`} />
           </span>
         );
       case 61:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias ligeras{" "}
-            <WiSprinkle className="text-8xl mx-auto" />
+            <WiSprinkle className={`${icon}`} />
           </span>
         );
       case 63:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias moderadas{" "}
-            <WiShowers className="text-8xl mx-auto" />
+            <WiShowers className={`${icon}`} />
           </span>
         );
       case 65:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias intensas{" "}
-            <WiRain className="text-8xl mx-auto" />
+            <WiRain className={`${icon}`} />
           </span>
         );
       case 66:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias heladas ligeras{" "}
-            <WiSleet className="text-8xl mx-auto" />
+            <WiSleet className={`${icon}`} />
           </span>
         );
       case 67:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias heladas intensas{" "}
-            <WiRainMix className="text-8xl mx-auto" />
+            <WiRainMix className={`${icon}`} />
           </span>
         );
       case 71:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas ligeras{" "}
-            <WiDaySnow className="text-8xl mx-auto" />
+            <WiDaySnow className={`${icon}`} />
           </span>
         );
       case 73:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas moderadas{" "}
-            <WiDaySnow className="text-8xl mx-auto" />
+            <WiDaySnow className={`${icon}`} />
           </span>
         );
       case 75:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas intensas{" "}
-            <WiSnow className="text-8xl mx-auto" />
+            <WiSnow className={`${icon}`} />
           </span>
         );
       case 77:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevizcas{" "}
-            <WiDaySleet className="text-8xl mx-auto" />
+            <WiDaySleet className={`${icon}`} />
           </span>
         );
       case 80:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias aisladas ligeras{" "}
-            <WiDaySprinkle className="text-8xl mx-auto" />
+            <WiDaySprinkle className={`${icon}`} />
           </span>
         );
       case 81:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias aisladas moderadas{" "}
-            <WiDayShowers className="text-8xl mx-auto" />
+            <WiDayShowers className={`${icon}`} />
           </span>
         );
       case 82:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Lluvias aisladas intensas{" "}
-            <WiDayRain className="text-8xl mx-auto" />
+            <WiDayRain className={`${icon}`} />
           </span>
         );
       case 85:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas aisladas ligeras{" "}
-            <WiDaySnow className="text-8xl mx-auto" />
+            <WiDaySnow className={`${icon}`} />
           </span>
         );
       case 86:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Nevadas aisladas intensas{" "}
-            <WiSnow className="text-8xl mx-auto" />
+            <WiSnow className={`${icon}`} />
           </span>
         );
       case 95:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Tormentas eléctricas{" "}
-            <WiDayLightning className="text-8xl mx-auto" />
+            <WiDayLightning className={`${icon}`} />
           </span>
         );
       case 96:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Tormentas eléctricas con granizo ligero{" "}
-            <WiDaySnowThunderstorm className="text-8xl mx-auto" />
+            <WiDaySnowThunderstorm className={`${icon}`} />
           </span>
         );
       case 99:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Tormentas eléctricas con granizo intenso{" "}
-            <WiDayStormShowers className="text-8xl mx-auto" />
+            <WiDayStormShowers className={`${icon}`} />
           </span>
         );
       default:
         return (
-          <span className="text-2xl text-center">
+          <span className={`${text}`}>
             Despejado{" "}
-            <WiDaySunny className="text-8xl mx-auto" />
+            <WiDaySunny className={`${icon}`} />
           </span>
         );
     }
@@ -438,7 +438,10 @@ const WeatherCode = ({ data }) => {
 }
 
 WeatherCode.propTypes = {
-  data: PropTypes.object,
+  is_day: PropTypes.number,
+  code: PropTypes.number,
+  text: PropTypes.string,
+  icon: PropTypes.string,
 };
 
 export default WeatherCode;
