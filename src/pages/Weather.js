@@ -103,18 +103,18 @@ const Weather = () => {
             : !isForecastOn
               ? <>
                 <header className="w-full flex flex-col items-start justify-evenly gap-4 sm:flex-row sm:items-end 
-                sm:justify-between text-OffBlack max-sm:mx-2 p-2 mt-32 sm:mt-12">
+                sm:justify-between text-OffBlack p-2 mt-32 sm:mt-12">
                   <Locations setLat={set$lat} setLon={set$lon} setLocation={setLocation} />
                   <section
-                    className="border border-OffBlack rounded shadow-md shadow-Gray75 z-10 py-0 px-4 opacity-80
-                    bg-gradient-to-r from-sky-600 to-sky-300 hover:cursor-pointer hover:opacity-100 hover:shadow-Gray25"
+                    className="border border-OffBlack rounded shadow-md shadow-Gray25 py-0 px-4 opacity-75
+                    bg-gradient-to-r from-sky-600 to-sky-300 hover:cursor-pointer hover:opacity-100"
                     onClick={() => toggleForecast()}>
                     <span className="inline text-sm">Ver pronóstico</span>
                     <RxMagnifyingGlass className="inline ms-1 mb-1 w-6 h-6" />
                   </section>
                 </header>
-                <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4 
-                md:grid-rows-3 p-2 pe-0">
+                <main className="grid grid-cols-1 grid-rows-[auto] sm:grid-cols-3 md:grid-cols-4 sm:grid-rows-4 md:grid-rows-5
+                p-2">
                   <TodaysInfo data={ data } location={ location } />
                   <TodaysChart data={ data } />
                   <TodaysHighlights data={ data } />

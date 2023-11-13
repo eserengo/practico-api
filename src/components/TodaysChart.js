@@ -46,7 +46,7 @@ const TodaysChart = ({ data }) => {
         min: -20,
         max: 40,
         ticks: {
-          stepSize: 20,
+          stepSize: 10,
           color: `${!data.current_weather.is_day ? "#fcfcfc" : "#030303"}`,
           font: {
             family: "Oswald",
@@ -92,13 +92,13 @@ const TodaysChart = ({ data }) => {
   };
 
   return (
-    <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-start-2
-      md:col-span-3 sm:row-start-1 sm:row-end-1 p-2">
-      <h2 className="text-2xl text-OffBlack">Hoy</h2>
+    <article className="col-start-1 col-end-1 row-auto sm:col-span-3 md:col-start-2
+    sm:row-start-4 sm:row-span-1 md:row-start-1 md:row-span-2 max-sm:mt-4 md:ms-8">
+      <h2 className="text-xl sm:text-2xl text-OffBlack">Hoy</h2>
       <section className={`border border-OffBlack rounded-md shadow-md shadow-Gray25 p-2
         ${!data.current_weather.is_day
-          ? "bg-gradient-to-tr from-indigo-300 to-indigo-600"
-          : "bg-gradient-to-tr from-orange-600 to-orange-300"
+          ? "bg-gradient-to-tr from-indigo-300 to-indigo-500"
+          : "bg-gradient-to-tr from-orange-500 to-orange-300"
         }`}
       >
         <Bar data={inputData()} options={inputOptions} />

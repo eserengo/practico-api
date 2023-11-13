@@ -99,9 +99,9 @@ const TodaysInfo = ({ data, location }) => {
   }
 
   return (
-    <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-span-4 md:row-span-3 border
-      border-OffBlack rounded-md shadow-md shadow-Gray25 max-sm:mx-2 sm:me-2 sm:mb-2 sm:mt-10 lg:mb-4 xl:mb-6">
-      <section className={`flex flex-col items-center justify-evenly gap-4 p-2 h-full custom-bg ${bgDisplay()}`}>
+    <article className="col-start-1 col-end-1 row-auto sm:row-start-1 sm:row-end-4 md:row-end-6
+    border border-OffBlack rounded-md shadow-md shadow-Gray25 max-sm:mt-4 sm:mt-8 max-sm:mb-0 max-md:mb-8">
+      <section className={`flex flex-col items-center justify-between p-2 h-full custom-bg ${bgDisplay()}`}>
         <p className="text-xl">
           {!data.current_weather.is_day ? "Buenas noches" : "Buenos dias"}
         </p> 
@@ -114,12 +114,12 @@ const TodaysInfo = ({ data, location }) => {
         </h1>
         { location.includes("Error")
           ? (
-            <p className="text-xl text-center text-red-600">
+            <p className="text-xl text-center text-red-600 mb-2">
               {location}
             </p>
           )
           : (
-            <p className="text-xl text-center">
+            <p className="text-xl text-center mb-2">
               en {location}
             </p> 
           )
@@ -130,7 +130,7 @@ const TodaysInfo = ({ data, location }) => {
           text={"text-xl text-center"}
           icon={"text-8xl mx-auto"}
         />
-        <p className="text-xl text-center">
+        <p className="text-xl text-center mb-2">
           {date() &&
             date().toLocaleString("es", {
               timeStyle: "short",
@@ -141,8 +141,8 @@ const TodaysInfo = ({ data, location }) => {
           className={`flex flex-row flex-wrap items-center justify-evenly rounded-md border border-OffBlack shadow-md 
           shadow-Gray25 divide-x p-4
           ${!data.current_weather.is_day
-            ? "divide-OffWhite bg-gradient-to-r from-indigo-200 via-indigo-400 to-indigo-800"
-            : "divide-OffBlack bg-gradient-to-r from-orange-700 via-orange-400 to-orange-200"
+            ? "divide-OffWhite bg-gradient-to-r from-indigo-200 to-indigo-600"
+            : "divide-OffBlack bg-gradient-to-r from-orange-600 to-orange-200"
           }`}
           >
           <div className="flex flex-col items-center justify-between gap-2 pe-4 w-1/2 h-full">

@@ -122,26 +122,26 @@ const TodaysHighlights = ({ data }) => {
 
   return (
     <article className="col-start-1 col-end-1 row-auto sm:col-start-2 sm:col-span-2 md:col-span-3
-      sm:row-start-2 sm:row-span-3 md:row-span-2 p-2 sm:mt-8">
-      <h2 className="text-2xl text-OffBlack">Destacados</h2>
-      <section className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-[auto] gap-2 mt-2">
+      sm:row-start-1 sm:row-span-3 md:row-start-3 max-sm:mt-4 sm:ms-8 md:mt-4">
+      <h2 className="text-xl sm:text-2xl text-OffBlack">Destacados</h2>
+      <section className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 grid-rows-[auto] gap-2">
         {filteredData().map((item, index) => {
           return (
             <div
               key={`card_${index}`}
-              className={`relative flex flex-col items-start justify-evenly gap-2 border border-OffBlack
-              rounded-md shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[10rem] 
+              className={`relative flex flex-col items-start justify-evenly border border-OffBlack
+              rounded-md shadow-md shadow-Gray25 p-2 overflow-hidden min-h-[8rem] 
               ${!data.current_weather.is_day
-                  ? "bg-gradient-to-tr from-indigo-300 to-indigo-600 text-OffWhite"
-                  : "bg-gradient-to-tr from-orange-600 to-orange-300 text-OffBlack"
+                  ? "bg-gradient-to-tr from-indigo-300 to-indigo-500 text-OffWhite"
+                  : "bg-gradient-to-tr from-orange-500 to-orange-300 text-OffBlack"
               }`}
             >
-              <h3 className="z-10 uppercase">{item.title}</h3>
-              <p className="text-[2.5rem] font-bold z-10">
+              <h3 className="uppercase z-10 text-sm">{item.title}</h3>
+              <p className="text-3xl font-bold z-10">
                 {item.value}
               </p>
-              <p className="text-xl z-10">{item.level}</p>
-              <span className="text-OffWhite opacity-25 absolute -top-4 left-1/3 text-[12rem] z-0">
+              <p className="z-10">{item.level}</p>
+              <span className="text-OffWhite opacity-20 absolute -top-4 left-1/3 text-[12rem] z-0">
                 {item.icon}
               </span>
             </div>

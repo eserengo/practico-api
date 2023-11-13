@@ -66,24 +66,29 @@ const Forecast = ({ lat, lon, location, isForecastOn, setIsForecastOn }) => {
       }
       result.push(obj);
     }
-
     return result;
   }
 
-  const filteredData = data.daily &&
-    createArrayOfObjects(data.daily.time, data.daily.weather_code, data.daily.temperature_2m_max, data.daily.temperature_2m_min);
+  const arrangedData =
+    data.daily &&
+      createArrayOfObjects(
+        data.daily.time,
+        data.daily.weather_code,
+        data.daily.temperature_2m_max,
+        data.daily.temperature_2m_min
+    )
 
   const bgDisplay = (code) => {
     switch (code) {
       case 0:
       case 1:
-        return "dia-despejado";
+        return "dia-despejado text-OffBlack";
       case 2:
       case 3:
-        return "dia-nublado";
+        return "dia-nublado text-OffWhite";
       case 45:
       case 48:
-        return "dia-niebla";
+        return "dia-niebla text-OffWhite";
       case 51:
       case 53:
       case 55:
@@ -97,19 +102,19 @@ const Forecast = ({ lat, lon, location, isForecastOn, setIsForecastOn }) => {
       case 80:
       case 81:
       case 82:
-        return "dia-lluvioso";
+        return "dia-lluvioso text-OffWhite";
       case 71:
       case 73:
       case 75:
       case 77:
       case 85:
       case 86:
-        return "dia-nieve";
+        return "dia-nieve text-OffBlack";
       default:
-        return "dia-tormenta";
+        return "dia-tormenta text-OffWhite";
     }
   }
-  
+
   const handleClick = () => {
     setIsForecastOn(!isForecastOn);
     setSearchParams(() => {
@@ -118,57 +123,77 @@ const Forecast = ({ lat, lon, location, isForecastOn, setIsForecastOn }) => {
     });
   }
 
-  return (
-    data && !data.error
-      ? <>
-        { isLoading
-          ? <main className="flex flex-row items-center justify-center p-2 w-screen h-screen">
-            <Spinner />
-            <h1 className="text-5xl font-bold text-OffBlack">Cargando...</h1>
-          </main>
-          
-          : <main className="p-2 max-sm:mt-32 sm:mt-12">
-            <aside className="mb-2">
-              <button
-                type={"button"}
-                onClick={() => handleClick()}
-                className="flex flex-row items-center justify-end opacity-60 text-Gray25 mb-2 w-full
+  return (data && !data.error
+    ? <>
+      {isLoading
+        ? <main className="flex flex-row items-center justify-center p-2 w-screen h-screen">
+          <Spinner />
+          <h1 className="text-5xl font-bold text-OffBlack">Cargando...</h1>
+        </main>
+        : <main className="p-2 max-sm:mt-32 sm:mt-12">
+          <aside className="mb-2">
+            <button
+              type={"button"}
+              onClick={() => handleClick()}
+              className="flex flex-row items-center justify-end opacity-60 text-Gray25 mb-2 w-full
                 hover:opacity-100 hover:text-OffBlack"
-              >
-                <span className="me-2 border-2 border-OffBlack rounded shadow-md shadow-Gray25">
-                  <RxChevronLeft className="w-10 h-8" />
-                </span>
-                <span className="text-2xl font-bold">
-                  Volver
-                </span>
-              </button>
-            </aside>
-            <article>
-              <h3 className="text-OffBlack text-xl md:text-2xl mb-2">Pronóstico para {location}</h3>
-              <section className="flex flex-col items-start gap-4 text-OffBlack">
-                { filteredData && filteredData
-                  .map((item, index) => {
-                    return (
-                      <div
-                        key={`forecast_card_${index}`}
-                        className={`max-sm:text-sm md:text-xl flex flex-row items-center justify-between w-full gap-1 px-2 py-4
-                        border border-OffBlack rounded shadow-md shadow-Gray25 custom-bg ${bgDisplay(item.weathercode)}`}
+            >
+              <span className="me-2 border-2 border-OffBlack rounded shadow-md shadow-Gray25">
+                <RxChevronLeft className="w-10 h-8" />
+              </span>
+              <span className="text-2xl font-bold">Volver</span>
+            </button>
+          </aside>
+          <article>
+            <h3 className="text-OffBlack text-xl md:text-2xl mb-2">
+              Pronóstico para {location}
+            </h3>
+            <section className="flex flex-col items-start md:flex-row md:items-center md:justify-between gap-4">
+              {arrangedData &&
+                arrangedData.map((item, index) => {
+                  return (
+                    <div
+                      key={`forecast_card_${index}`}
+                      className= {
+                        `flex flex-row items-center justify-between md:flex-col md:items-start w-full gap-2 md:gap-4
+                        p-2 max-xs:min-h-[6rem] min-h-[8rem] md:min-h-[22rem] lg:min-h-[28rem] border border-OffBlack rounded shadow-md
+                        shadow-Gray25 custom-bg ${bgDisplay(item.weathercode)}`
+                      }
+                    >
+                      <span
+                        className="max-sm:text-sm md:text-xl lg:text-2xl max-sm:w-1/4"
                       >
-                        <span className="max-sm:w-1/4">{ new Date(item.time).toLocaleString("es", {dateStyle: "full", timeZone: "UTC"}) }</span>
-                        <WeatherCode is_day={1} code={item.weathercode} text={"text-center"} icon={"text-4xl md:text-5xl lg:text-6xl mx-auto"} />
-                        <span className="text-center">max: {item.max} {data.daily_units.temperature_2m_max}</span>
-                        <span className="text-center">min: {item.min} {data.daily_units.temperature_2m_min}</span>
-                      </div>
-                    )
-                  })
-                }
-              </section>
-            </article>
-          </main>
-        }
-      </>
-      : <Error data={data} />
-  )
+                        {new Date(item.time).toLocaleString("es", {
+                          dateStyle: "long",
+                          timeZone: "UTC",
+                        })}
+                      </span>
+                      <WeatherCode
+                        is_day={1}
+                        code={item.weathercode}
+                        text={"max-sm:text-sm md:text-xl lg:text-2xl max-md:text-center"}
+                        icon={"max-md:mx-auto text-4xl md:text-6xl lg:text-8xl"}
+                      />
+                      <span
+                        className="max-sm:text-sm md:text-xl lg:text-2xl max-xs:w-1/4"
+                      >
+                        max: <br /> {item.max} {data.daily_units.temperature_2m_max}
+                      </span>
+                      <span
+                        className="max-sm:text-sm md:text-xl lg:text-2xl max-xs:w-1/4"
+                      >
+                        min: <br /> {item.min} {data.daily_units.temperature_2m_min}
+                      </span>
+                    </div>
+                  );
+                })}
+            </section>
+          </article>
+        </main>
+      }
+    </>
+    : <Error data={data} />
+  );
 }
 
 Forecast.propTypes = {
@@ -177,6 +202,6 @@ Forecast.propTypes = {
   location: PropTypes.string,
   isForecastOn: PropTypes.bool,
   setIsForecastOn: PropTypes.func,
-};
+}
 
 export default Forecast;
